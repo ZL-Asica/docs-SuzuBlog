@@ -30,14 +30,36 @@
 ### 本地部署/预览
 
 1. 确保你安装了 [Node.js](https://nodejs.org/)。
-2. 在项目根目录运行以下命令：
+2. 确保你配置了 [pnpm](https://pnpm.io/)，如果不确定，可以按照以下步骤检查并安装：
+
+   ```bash
+   pnpm --version
+   ```
+
+   如果提示没有该命令，可以运行以下命令开启：
+
+   ```bash
+   npm install --global corepack@latest
+   corepack enable pnpm
+   ```
+
+3. 确保上午前置条件满足后，在项目根目录运行以下命令以安装依赖并启动本地服务：
 
    ```bash
    pnpm install
    pnpm dev
    ```
 
-3. 打开浏览器访问 `http://localhost:3000`，即可预览你的博客。
+4. 打开浏览器访问 `http://localhost:3000`，即可预览你的博客。
+
+5. 本地构建及预览（想要在自己的服务器上部署也是相同的步骤，但要记得开启进程守护）：
+
+   如果你想要在本地尝试构建并预览可以运行以下命令：
+
+   ```bash
+   pnpm build
+   pnpm start
+   ```
 
 ## 5. 自动同步
 
@@ -45,9 +67,9 @@
 
 以下目录在同步时会被忽略，确保你的自定义内容安全：
 
-- `.git`
-- `public`
-- `posts`
-- `config.yml`
+- `.git`: Git 版本控制目录
+- `public`: 你的静态文件目录
+- `posts`: 你的文章目录
+- `config.yml`: 你的站点配置文件
 
 如果你在使用过程中遇到问题，别忘了查看我们的详细文档或加入社区寻求帮助！✨

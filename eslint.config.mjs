@@ -1,14 +1,14 @@
-import { zlAsicaTsConfig } from 'eslint-config-zl-asica';
+import antfu from '@antfu/eslint-config'
 
-export default [
-  ...zlAsicaTsConfig,
-
-  {
-    ignores: [
-      'docs/.vitepress/dist',
-      'docs/.vitepress/cache',
-      'prettier.config.cjs',
-    ],
-    rules: {},
+export default antfu({
+  formatters: true,
+  typescript: {
+    tsconfigPath: 'tsconfig.json',
   },
-];
+  lessOpinionated: true,
+}, {
+  files: ['docs/.vitepress/theme/**/*.ts'],
+  rules: {
+    'ts/no-unsafe-assignment': 'off',
+  },
+})

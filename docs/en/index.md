@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: 'SuzuBlog Docs'
-  text: 'Comprehensive documentation for SuzuBlog.'
-  tagline: 'Your guide to setting up, customizing, and maximizing SuzuBlog 🚀'
+  name: "SuzuBlog Docs"
+  text: "Comprehensive documentation"
+  tagline: "Your guide to setting up, customizing, and maximizing SuzuBlog 🚀"
   actions:
     - theme: brand
       text: Quick Start ✨
@@ -15,7 +15,7 @@ hero:
       link: /en/guide/posts/
     - theme: brand
       text: View Demo 🚀
-      link: 'https://www.zla.pub'
+      link: "https://www.zla.pub"
 
 features:
   - icon: 🛠️

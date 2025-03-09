@@ -6,7 +6,7 @@ We warmly welcome all types of contributions! **SuzuBlog** is an open-source pro
 
 ### 1. Fork the Repository
 
-Visit the [SuzuBlog GitHub Repository](https://github.com/ZL-Asica/SuzuBlog) and **Fork** it to your account.
+Click **Fork** on the [SuzuBlog GitHub repository](https://github.com/ZL-Asica/SuzuBlog/fork) to create a copy in your account.
 
 ### 2. Clone the Repository Locally
 
@@ -17,7 +17,7 @@ cd SuzuBlog
 
 ### 3. Install Dependencies
 
-We recommend using `pnpm` for dependency management:
+Use `pnpm` for dependency management:
 
 ```bash
 pnpm install
@@ -55,6 +55,7 @@ Check out the latest [contributors](https://github.com/ZL-Asica/SuzuBlog/graphs/
 ### Report Bugs or Suggest Features
 
 - Submit bug reports via [Issues](https://github.com/ZL-Asica/SuzuBlog/issues).
+- Follow the Issue template.
 - Please include as much detail as possible:
   - A clear description of the bug.
   - Steps to reproduce the issue.

@@ -6,19 +6,9 @@ The file `/posts/_pages/Friends.md` is the location for your friends page. You c
 
 ## 📜 Frontmatter Configuration
 
-```yaml
----
-title: Some Customized Title # (Optional) The page title, defaults to "Friends"
-thumbnail: '' # (Optional) Thumbnail for the page
-showComments: true # Enable or disable comments for this page
----
-```
+Follow the configuration method in the [\_pages introduction](./pages) to set up the Frontmatter for the friends page, which is used to set the basic information and display effects of the page.
 
-### Explanation
-
-- **`title`**: The title of the page. The default is `Friends`, but you can customize it here.
-- **`thumbnail`**: Add a custom thumbnail to the friends page. (Default: No thumbnail)
-- **`showComments`**: Whether to enable the comments section. Set to `true` or `false`.
+It is recommended to set `showComments` to `true` to allow visitors to leave messages on the friends page to exchange links or update information.
 
 ## 🖇️ Friends Link Format
 
@@ -26,7 +16,7 @@ Each link must follow a specific JSON format to ensure the correct rendering of 
 
 ### Example Structure
 
-Note that the links must be included inside a code block with the ````Links` marker at the start. Below is an example configuration you can refer to.
+Note that the links must be included inside a code block with the ` ```Links` marker at the start. Below is an example configuration you can refer to.
 
 ````markdown
 ```Links
@@ -63,6 +53,6 @@ The JSON structure for each friend link is as follows:
 - **`title`**: The title of the link, such as the name of a personal blog or project.
 - **`link`**: The complete URL of the link.
 - **`img`**: The URL of the link's avatar or image. Supports any size and format.
-- **`des`**: A short description of the link, used to describe the website or project.
+- **`des`**: A short description of the link, used to describe the website or project. It will be displayed when hovering over the link (if empty, it will not be displayed).
 
 By following this format, your friends page will render correctly, allowing you to effectively manage and display your links. Happy blogging! ✨

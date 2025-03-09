@@ -1,5 +1,7 @@
-import type { HeadConfig } from 'vitepress';
-import { defineConfig } from 'vitepress';
+import type { DefaultTheme, HeadConfig } from 'vitepress'
+import { defineConfig } from 'vitepress'
+
+import pkg from '../../package.json' assert { type: 'json' }
 
 const sharedThemeConfig = {
   socialLinks: [
@@ -21,37 +23,45 @@ const sharedThemeConfig = {
   editLink: {
     patter: 'https://github.com/ZL-Asica/docs-SuzuBlog/edit/main/docs/:path',
   },
-};
+}
 
 const sharedHeadConfig = {
   zh: [
     ['meta', { name: 'description', content: 'SuzuBlog 的文档站点' }],
-    [
-      'meta',
-      { name: 'keywords', content: 'SuzuBlog, 文档, VuePress, Next.js' },
-    ],
+    ['meta', { name: 'keywords', content: 'SuzuBlog, 文档, VuePress, Next.js' }],
     ['meta', { property: 'og:description', content: 'SuzuBlog 的文档站点' }],
   ] as HeadConfig[],
   en: [
     ['meta', { name: 'description', content: 'SuzuBlog Docs' }],
-    [
-      'meta',
-      { name: 'keywords', content: 'SuzuBlog, Docs, VuePress, Next.js' },
-    ],
+    ['meta', { name: 'keywords', content: 'SuzuBlog, Docs, VuePress, Next.js' }],
     ['meta', { property: 'og:description', content: 'SuzuBlog Docs' }],
   ] as HeadConfig[],
-};
+}
 
 const sharedNavConfig = {
   zh: [
     { text: '首页', link: '/' },
     { text: '指南', link: '/guide' },
-  ],
+    {
+      text: `v${pkg.version}`,
+      items: [
+        { text: '版本发布', link: 'https://github.com/ZL-Asica/SuzuBlog/releases' },
+        { text: '参与贡献', link: 'https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md' },
+      ],
+    },
+  ] as DefaultTheme.NavItem[],
   en: [
     { text: 'Home', link: '/en/' },
     { text: 'Guide', link: '/en/guide' },
-  ],
-};
+    {
+      text: `v${pkg.version}`,
+      items: [
+        { text: 'Releases', link: 'https://github.com/ZL-Asica/SuzuBlog/releases' },
+        { text: 'Contribution', link: 'https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md' },
+      ],
+    },
+  ] as DefaultTheme.NavItem[],
+}
 
 const sharedSidebarConfig = {
   zh: [
@@ -68,14 +78,13 @@ const sharedSidebarConfig = {
     {
       text: '文章及页面',
       items: [
-        { text: '文章', link: '/guide/posts/' },
+        { text: '博客文章配置', link: '/guide/posts/' },
+        { text: 'Markdown 语法支持', link: '/guide/posts/grammar' },
         { text: '_pages', link: '/guide/posts/pages' },
         { text: '友情链接', link: '/guide/posts/friends' },
       ],
     },
-    {
-      items: [{ text: '参与贡献', link: '/guide/contribution' }],
-    },
+    { items: [{ text: '参与贡献', link: '/guide/contribution' }] },
   ],
   en: [
     {
@@ -91,64 +100,36 @@ const sharedSidebarConfig = {
     {
       text: 'Posts & Pages',
       items: [
-        { text: 'Posts', link: '/en/guide/posts/' },
+        { text: 'Blog Posts Settings', link: '/en/guide/posts/' },
+        { text: 'Markdown Grammar', link: '/en/guide/posts/grammar' },
         { text: '_pages', link: '/en/guide/posts/pages' },
         { text: 'Friends', link: '/en/guide/posts/friends' },
       ],
     },
-    {
-      items: [{ text: 'Contribution', link: '/en/guide/contribution' }],
-    },
+    { items: [{ text: 'Contribution', link: '/en/guide/contribution' }] },
   ],
-};
+}
 
 export default defineConfig({
   title: 'SuzuBlog Docs',
   head: [
     ['meta', { name: 'author', content: 'ZL Asica' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    [
-      'link',
-      {
-        rel: 'icon',
-        type: 'image/png',
-        href: '/favicon-96x96.png',
-        sizes: '96x96',
-      },
-    ],
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon-96x96.png', sizes: '96x96' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
-    [
-      'link',
-      {
-        rel: 'apple-touch-icon',
-        sizes: '180x180',
-        href: '/apple-touch-icon.png',
-      },
-    ],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
     ['link', { rel: 'manifest', href: '/site.webmanifest' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
-    [
-      'link',
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-    ],
-    [
-      'link',
-      {
-        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap',
-        rel: 'stylesheet',
-      },
-    ],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    ['link', {
+      href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap',
+      rel: 'stylesheet',
+    }],
     ['meta', { property: 'og:title', content: 'SuzuBlog Docs' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:url', content: 'https://suzu.zla.app' }],
-    [
-      'meta',
-      {
-        property: 'og:image',
-        content: 'https://suzu.zla.app/apple-touch-icon.png',
-      },
-    ],
+    ['meta', { property: 'og:image', content: 'https://suzu.zla.app/apple-touch-icon.png' }],
     ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
   ],
   locales: {
@@ -191,5 +172,9 @@ export default defineConfig({
       },
     },
   },
+  sitemap: {
+    hostname: 'https://suzu.zla.app',
+    lastmodDateOnly: true,
+  },
   lastUpdated: true,
-});
+})

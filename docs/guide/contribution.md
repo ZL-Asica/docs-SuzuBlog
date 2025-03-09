@@ -6,7 +6,7 @@
 
 ### 1. Fork 仓库
 
-点击 [SuzuBlog GitHub 仓库](https://github.com/ZL-Asica/SuzuBlog) 并 **Fork** 到你的账户。
+点击 **Fork** [SuzuBlog GitHub 仓库](https://github.com/ZL-Asica/SuzuBlog/fork) 到你的账户。
 
 ### 2. Clone 到本地
 
@@ -17,7 +17,7 @@ cd SuzuBlog
 
 ### 3. 安装依赖
 
-我们推荐使用 `pnpm` 进行依赖管理：
+使用 `pnpm` 进行依赖管理：
 
 ```bash
 pnpm install
@@ -55,6 +55,7 @@ pnpm dev
 ### 提交 Bug / 功能建议
 
 - 在 [Issues](https://github.com/ZL-Asica/SuzuBlog/issues) 中提交 Bug 报告。
+- 遵循 Issue 模板填写内容
 - 请尽量包含以下内容：
   - Bug 的详细描述。
   - 复现步骤。

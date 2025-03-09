@@ -4,13 +4,14 @@
 
 SuzuBlog is a minimalist blog template built with **Next.js** and pure **Markdown**, offering the following features:
 
-- **Blazing fast performance**: Supports both Server-Side Rendering (SSR) and Static Site Generation (SSG).
+- **Blazing fast performance**: Supports both Incremental Static Regeneration (ISR) and Static Site Generation (SSG) for instant page loads.
+- **Easy to use**: Launch your blog in minutes without databases or complex configurations.
 - **Highly customizable**: Quickly adjust site styles and features via a simple `config.yml` file.
-- **Developer-friendly**: Built with modern tools like TypeScript and Tailwind CSS, simplifying development workflows.
+- **Strong compatibility**: Supports Markdown articles and pages with code highlighting, LaTeX formulas, and various tags.
 
 ## **2. How do I configure site information?**
 
-Locate the `config.yml` file in the root directory of your project and configure it as follows:
+Locate the `config.yml` file in your project root and follow the detailed instructions on the [config.yml](./config/) page:
 
 - Modify the site title, description, and author information.
 - Set up the navigation bar and social links.
@@ -18,7 +19,7 @@ Locate the `config.yml` file in the root directory of your project and configure
 
 ## **3. How do I write and manage articles?**
 
-- Place your Markdown files in the `posts` folder.  
+- Place your Markdown files in the `posts` folder.
   The filename will automatically become the article's URL (e.g., `posts/my-post.md` will be accessible as `/my-post`).
 - To customize special pages like "About Me" or "Friends," edit the corresponding files in the `posts/_pages` folder.
 
@@ -63,6 +64,7 @@ SuzuBlog has built-in SEO support with the following features:
 - Automatically generates `sitemap.xml` and `robots.txt`.
 - Provides Open Graph and Twitter Card metadata.
 - Allows configuration of site-level `meta` tags and descriptions to improve visibility in search engines.
+- Automatically generates `meta` tags for each page based on content, including article titles, descriptions, and keywords.
 
 ## **8. Why do I need Node.js 18 or higher?**
 

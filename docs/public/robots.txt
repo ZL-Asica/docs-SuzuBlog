@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://suzu.zla.app/docs-sitemap.xml
+Sitemap: https://suzu.zla.app/sitemap.xml
