@@ -1,10 +1,11 @@
 import type { DefaultTheme, HeadConfig } from 'vitepress'
 import { defineConfig } from 'vitepress'
 
-import pkg from '../../package.json' assert { type: 'json' }
+import pkg from '../../package.json' with { type: 'json' }
 
 const sharedThemeConfig = {
   socialLinks: [
+    { icon: 'rss', link: 'https://www.zla.pub' },
     { icon: 'github', link: 'https://github.com/ZL-Asica/SuzuBlog' },
   ],
   search: {

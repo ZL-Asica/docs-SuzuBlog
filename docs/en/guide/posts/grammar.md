@@ -161,6 +161,15 @@ Use `<br>` or two spaces followed by Enter to insert a line break:
 First line<br>Second line
 ```
 
+## 14. Checklists
+
+Supports creating checklists with `- [ ]` or `- [x]`:
+
+```markdown
+- [ ] Unchecked item
+- [x] Checked item
+```
+
 ## 🚀 Conclusion
 
 These are the Markdown syntax features supported by SuzuBlog. You can use them to write rich and well-structured articles, making your blog content more engaging and readable! 📖✨

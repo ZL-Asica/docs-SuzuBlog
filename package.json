@@ -1,8 +1,8 @@
 {
   "name": "docs-suzublog",
-  "version": "1.4.1",
+  "version": "1.5.1",
   "private": true,
-  "packageManager": "pnpm@10.6.1",
+  "packageManager": "pnpm@10.6.3",
   "scripts": {
     "docs:dev": "vitepress dev docs --open",
     "docs:build": "vitepress build docs",
@@ -13,13 +13,12 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.8.1",
-    "@zl-asica/prettier-config": "^1.0.9",
+    "@antfu/eslint-config": "^4.10.1",
     "eslint": "^9.22.0",
     "eslint-config-zl-asica": "^1.0.20",
     "eslint-plugin-format": "^1.0.1",
     "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
+    "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "vitepress": "^1.6.3"
   },

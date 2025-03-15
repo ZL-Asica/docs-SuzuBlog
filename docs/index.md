@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "SuzuBlog Docs"
-  text: "全面的文档指南"
-  tagline: "帮助你快速设置、定制和最大化 SuzuBlog 的潜力 🚀"
+  name: SuzuBlog Docs
+  text: 全面的文档指南
+  tagline: 帮助你快速设置、定制和最大化 SuzuBlog 的潜力 🚀
   actions:
     - theme: brand
       text: 快速开始 ✨
@@ -15,7 +15,7 @@ hero:
       link: /guide/posts/
     - theme: brand
       text: 查看示例 🚀
-      link: "https://www.zla.pub"
+      link: https://www.zla.pub
 
 features:
   - icon: 🛠️
