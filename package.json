@@ -1,6 +1,6 @@
 {
   "name": "docs-suzublog",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "private": true,
   "packageManager": "pnpm@10.6.3",
   "scripts": {
