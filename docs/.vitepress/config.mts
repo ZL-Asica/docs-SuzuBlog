@@ -69,6 +69,7 @@ const sharedSidebarConfig = {
     {
       items: [
         { text: '快速开始', link: '/guide/' },
+        { text: '本地开发', link: '/guide/dev' },
         { text: '常见问题', link: '/guide/faq' },
       ],
     },
@@ -91,6 +92,7 @@ const sharedSidebarConfig = {
     {
       items: [
         { text: 'Quick Start', link: '/en/guide/' },
+        { text: 'Local Development', link: '/en/guide/dev' },
         { text: 'FAQ', link: '/en/guide/faq' },
       ],
     },
