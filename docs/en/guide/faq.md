@@ -27,8 +27,13 @@ Locate the `config.yml` file in your project root and follow the detailed instru
 
 ### Recommended: Use [Vercel](https://vercel.com)
 
-1. Log in to Vercel and import your GitHub project.
-2. Click the deploy button, and Vercel will automatically build and host your blog.
+Click the button below to deploy your blog using Vercel:
+
+[![Deploy with Vercel][vercel-button]][vercel-deploy-link]
+
+::: warning
+Remember to set the `ENABLE_EXPERIMENTAL_COREPACK` environment variable to `1` in Vercel to enable pnpm and eliminate warnings.
+:::
 
 ### Local Preview or Deployment
 
@@ -77,3 +82,6 @@ SuzuBlog uses modern tools and features (e.g., ESM modules, `pnpm`, and Tailwind
 - **Contact us**: Use the contact methods provided on the GitHub page to reach out for help.
 
 We hope these answers help you use SuzuBlog smoothly! If you have any additional questions, feel free to reach out or submit feedback. 💕✨
+
+[vercel-button]: https://vercel.com/button
+[vercel-deploy-link]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FZL-Asica%2FSuzuBlog&env=ENABLE_EXPERIMENTAL_COREPACK&envDescription=This%20is%20option%20to%20enable%20corepack%20by%20default%20to%20use%20pnpm.%20Set%20this%20to%201.&envLink=https%3A%2F%2Fvercel.com%2Fdocs%2Fbuilds%2Fconfigure-a-build%23corepack&project-name=suzu-blog&repository-name=SuzuBlog&redirect-url=https%3A%2F%2Fsuzu.zla.app%2F&demo-title=ZLA%20%E5%B0%8F%E7%AB%99%20(Demo)&demo-description=ZL%20Asica%2C%20the%20creator%20of%20SuzuBlog%2C%20personal%20Blog.&demo-url=https%3A%2F%2Fzla.pub%2F

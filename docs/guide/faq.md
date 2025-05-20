@@ -27,8 +27,13 @@ SuzuBlog 是一个基于 **Next.js** 和纯 **Markdown** 的极简博客模板�
 
 ### 推荐方法：使用 [Vercel](https://vercel.com)
 
-1. 登录 Vercel 并导入你的 GitHub 项目。
-2. 点击部署按钮，Vercel 将自动完成构建和托管。
+点击下方按钮即可使用 Vercel 部署你的博客：
+
+[![Deploy with Vercel][vercel-button]][vercel-deploy-link]
+
+::: warning
+记得把 Vercel 环境变量中的 `ENABLE_EXPERIMENTAL_COREPACK` 设置为 `1` 以启用 pnpm 消除 Warning。
+:::
 
 ### 本地预览或部署
 
@@ -77,3 +82,6 @@ SuzuBlog 使用了现代的工具链和功能（如 ESM 模块、`pnpm` 和 Tail
 - **联系我们**：通过 GitHub 页面上的联系方式获取帮助。
 
 希望这些解答能帮助你顺利使用 SuzuBlog！如果还有其他问题，请随时联系或提交反馈哦～ 💕✨
+
+[vercel-button]: https://vercel.com/button
+[vercel-deploy-link]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FZL-Asica%2FSuzuBlog&env=ENABLE_EXPERIMENTAL_COREPACK&envDescription=This%20is%20option%20to%20enable%20corepack%20by%20default%20to%20use%20pnpm.%20Set%20this%20to%201.&envLink=https%3A%2F%2Fvercel.com%2Fdocs%2Fbuilds%2Fconfigure-a-build%23corepack&project-name=suzu-blog&repository-name=SuzuBlog&redirect-url=https%3A%2F%2Fsuzu.zla.app%2F&demo-title=ZLA%20%E5%B0%8F%E7%AB%99%20(Demo)&demo-description=ZL%20Asica%2C%20the%20creator%20of%20SuzuBlog%2C%20personal%20Blog.&demo-url=https%3A%2F%2Fzla.pub%2F

@@ -2,9 +2,17 @@
 
 Welcome to **SuzuBlog**! Follow these steps to quickly set up your blog:
 
-## 1. Use the Template
+## 1. Start with Vercel
 
-Click the **`Use this template`** button to create your own blog repository.
+Ready to launch your own Suzu Blog? Just click the button below to deploy instantly with Vercel:
+
+[![Deploy with Vercel][vercel-button]][vercel-deploy-link]
+
+:::warning
+Remember to set the `ENABLE_EXPERIMENTAL_COREPACK` environment variable to `1` in Vercel to enable pnpm and eliminate warnings.
+:::
+
+This will create a new repository with the SuzuBlog template and deploy it to Vercel. You can then customize your blog by following the steps below.
 
 ## 2. Configure Site Information
 
@@ -18,16 +26,7 @@ Locate the `config.yml` file in the root directory of your project and modify it
 - Place Markdown files in the `posts` folder. The filename will automatically become the URL of the article.
 - To customize pages like "About Me" or "Friends," edit the corresponding files in the `posts/_pages` directory.
 
-## 4. Deploy
-
-### Recommended: Cloud Hosting
-
-Use [Vercel](https://vercel.com) for deployment:
-
-1. Import your GitHub project to Vercel.
-2. Follow the prompts to complete the setup. Vercel will automatically build and host your blog.
-
-### Local Deployment/Preview
+## 4. Local Deployment/Preview (Optional)
 
 1. Ensure you have installed [Node.js](https://nodejs.org/).
 2. Ensure you have [pnpm](https://pnpm.io/) configured. If you're unsure, you can check and install it by running the following commands:
@@ -61,9 +60,11 @@ Use [Vercel](https://vercel.com) for deployment:
    pnpm start
    ```
 
-## 5. Automatic Updates
+## 5. Manual Updates (Optional)
 
-Your blog is set up to automatically sync with the latest updates from the SuzuBlog template through **GitHub Actions**.
+Your blog is set up to a manual sync with the latest updates from the SuzuBlog template through **GitHub Actions**.
+
+Go to the `Actions` tab in your repository and click on the `Sync SuzuBlog Main Branch 🎐` workflow. Click on the `Run workflow` button to sync the latest updates from the SuzuBlog template.
 
 The following directories are excluded during synchronization to ensure your custom content remains untouched:
 
@@ -73,3 +74,6 @@ The following directories are excluded during synchronization to ensure your cus
 - `config.yml`: Your site configuration file
 
 If you encounter any issues, don't forget to check our detailed documentation or join the community for support! ✨
+
+[vercel-button]: https://vercel.com/button
+[vercel-deploy-link]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FZL-Asica%2FSuzuBlog&env=ENABLE_EXPERIMENTAL_COREPACK&envDescription=This%20is%20option%20to%20enable%20corepack%20by%20default%20to%20use%20pnpm.%20Set%20this%20to%201.&envLink=https%3A%2F%2Fvercel.com%2Fdocs%2Fbuilds%2Fconfigure-a-build%23corepack&project-name=suzu-blog&repository-name=SuzuBlog&redirect-url=https%3A%2F%2Fsuzu.zla.app%2F&demo-title=ZLA%20%E5%B0%8F%E7%AB%99%20(Demo)&demo-description=ZL%20Asica%2C%20the%20creator%20of%20SuzuBlog%2C%20personal%20Blog.&demo-url=https%3A%2F%2Fzla.pub%2F
