@@ -36,6 +36,24 @@ This documentation's code is licensed under the **MIT License**. See the [LICENS
 
 Contents of the documentation are licensed under the **CC BY 4.0 License**. See the [LICENSE-CC](./LICENSE-CC) file for details.
 
+The SuzuBlog project is licensed under the **AGPL-3.0 License**. See the [SuzuBlog LICENSE](https://github.com/ZL-Asica/SuzuBlog/blob/main/LICENSE) file for details.
+
+## 📝 Citation
+
+If you use SuzuBlog in your work, please cite it using the metadata from the [CITATION.cff](./CITATION.cff) file.
+
+```bibtex
+@software{Liu_SuzuBlog,
+  author = {Liu, Zhuoran},
+  title = {{SuzuBlog}},
+  year = {2024},
+  url = {https://github.com/ZL-Asica/SuzuBlog},
+  doi = {10.5281/zenodo.15377307},
+  license = {AGPL-3.0},
+  note = {ORCID: 0009-0008-7221-2324}
+}
+```
+
 <!-- Badges / Links -->
 
 [eslint-badge]: https://img.shields.io/badge/eslint-4B32C3?logo=eslint&logoColor=white

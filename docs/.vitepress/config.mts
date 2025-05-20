@@ -5,7 +5,7 @@ import pkg from '../../package.json' with { type: 'json' }
 
 const sharedThemeConfig = {
   socialLinks: [
-    { icon: 'rss', link: 'https://www.zla.pub' },
+    { icon: 'rss', link: 'https://zla.pub' },
     { icon: 'github', link: 'https://github.com/ZL-Asica/SuzuBlog' },
   ],
   search: {
@@ -17,8 +17,8 @@ const sharedThemeConfig = {
       en: 'This docs Licensed under CC BY 4.0',
     },
     copyright: {
-      zh: '©️ 2024-Present <a href="https://www.zla.pub" target="_blank">ZL Asica</a> 版权所有',
-      en: 'Copyright ©️ 2024-Present <a href="https://www.zla.pub" target="_blank">ZL Asica</a>',
+      zh: '©️ 2024-Present <a href="https://zla.pub" target="_blank">ZL Asica</a> 版权所有',
+      en: 'Copyright ©️ 2024-Present <a href="https://zla.pub" target="_blank">ZL Asica</a>',
     },
   },
   editLink: {
