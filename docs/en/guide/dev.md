@@ -8,7 +8,7 @@ You may skip any or all of the following steps if you're certain your local envi
 
 ```plaintext
 Node.js >= 20
-Git
+git
 pnpm
 ```
 
@@ -25,7 +25,7 @@ If you see a version like `v22.0.0`, you're good to go. Otherwise, please instal
 We recommend using the latest LTS version:
 
 - **macOS/Linux**: Use `nvm` for version management
-- **Windows**: Use `fvm`
+- **Windows**: Use `WSL` or the installer directly
 
 👉 [Download Node.js](https://nodejs.org/en/download)
 
@@ -67,8 +67,6 @@ corepack enable pnpm
 For more help, see the official docs:
 
 👉 [pnpm Installation Guide](https://pnpm.io/installation)
-
----
 
 ## 2. Install Dependencies
 

@@ -1,8 +1,6 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "adam-bender.commit-message-editor",
     "naumovs.color-highlight",
     "anseki.vscode-color"
   ]

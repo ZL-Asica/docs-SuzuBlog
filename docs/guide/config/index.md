@@ -42,6 +42,30 @@ googleAnalytics: G-659VZ9NH28
 - **`slogan`**: 显示在首页头像下方的标语。
 - **`googleAnalytics`**: Google Analytics 跟踪 ID（可选，用于流量统计）。
 
+## 🌐 HTML 头部设置(HTML head Settings)
+
+```yaml
+links:
+  - rel: icon
+    type: image/png
+    href: /icons/favicon-96x96.png
+    sizes: 96x96
+  - rel: icon
+    type: image/svg+xml
+    href: /icons/favicon.svg
+  - rel: apple-touch-icon
+    href: /icons/apple-touch-icon.png
+    sizes: 180x180
+```
+
+可以设置多个 head 中的链接标签，通常用于添加网站图标和其他资源。
+
+- **`links`**: 用于在 HTML `<head>` 中添加额外的链接标签。
+  - **`rel`**: 链接关系类型（如 `icon`、`apple-touch-icon`）。
+  - **`type`**: 图标的 MIME 类型。
+  - **`href`**: 图标的路径或 URL。
+  - **`sizes`**: 图标的尺寸（可选）。
+
 ## ✍️ 文章设置 (Posts Settings)
 
 ```yaml
@@ -74,9 +98,11 @@ startYear: 2017
 
 ```yaml
 anilist_username: zlasica
+anilist_anime_name_style: english
 ```
 
 - **`anilist_username`**: 你的 AniList 用户名，用于显示你的动画列表（位于 `/about/anime` 页面），了解 [Anilist](https://anilist.co/)。（留空以隐藏动画列表）
+- **`anilist_anime_name_style`**: AniList 动画名称的显示风格，支持 `english`（英文）、`romaji`（罗马音）和 `native`（原名）。
 
 ## 🐦 社交媒体设置 (Social Media Settings)
 

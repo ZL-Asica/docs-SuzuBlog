@@ -8,7 +8,7 @@ SuzuBlog 支持无需本地环境即可运行。但如果你希望在发布前�
 
 ```plaintext
 Node.js >= 20
-Git
+git
 pnpm
 ```
 
@@ -25,7 +25,7 @@ node --version
 推荐使用最新版 LTS：
 
 - **macOS/Linux** 推荐使用 `nvm` 管理
-- **Windows** 推荐使用 `fvm`
+- **Windows** 推荐试用 `WSL` 或直接使用 installer 安装
 
 👉 [Node.js 官方下载地址](https://nodejs.org/en/download)
 
@@ -67,8 +67,6 @@ corepack enable pnpm
 若遇问题，可参考官方文档：
 
 👉 [pnpm 安装指南](https://pnpm.io/installation)
-
----
 
 ## 2. 安装依赖
 

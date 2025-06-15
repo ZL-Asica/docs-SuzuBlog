@@ -15,7 +15,7 @@ hero:
       link: /en/guide/posts/
     - theme: brand
       text: View Demo 🚀
-      link: "https://www.zla.pub"
+      link: "https://zla.pub"
 
 features:
   - icon: 🛠️

@@ -55,6 +55,8 @@ No! With **GitHub Actions**, your blog automatically syncs with the latest updat
 - `posts`: For all your article content.
 - `config.yml`: For your site configuration.
 
+After syncing, manually check the `config.yml` file and add any new configuration items as needed.
+
 ## **6. Does SuzuBlog support multiple languages?**
 
 Yes! SuzuBlog supports multi-language functionality. Here's how to set it up:

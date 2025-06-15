@@ -15,7 +15,7 @@ hero:
       link: /guide/posts/
     - theme: brand
       text: 查看示例 🚀
-      link: https://www.zla.pub
+      link: https://zla.pub
 
 features:
   - icon: 🛠️

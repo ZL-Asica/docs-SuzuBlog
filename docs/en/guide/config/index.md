@@ -44,6 +44,30 @@ googleAnalytics: G-659VZ9NH28
 - **`slogan`**: A slogan displayed on your homepage below the avatar.
 - **`googleAnalytics`**: The Google Analytics tracking ID (optional, for traffic analytics).
 
+## 🌐 HTML Head Settings
+
+```yaml
+links:
+  - rel: icon
+    type: image/png
+    href: /icons/favicon-96x96.png
+    sizes: 96x96
+  - rel: icon
+    type: image/svg+xml
+    href: /icons/favicon.svg
+  - rel: apple-touch-icon
+    href: /icons/apple-touch-icon.png
+    sizes: 180x180
+```
+
+You can set multiple link tags in the `<head>` section, typically used for adding site icons and other resources.
+
+- **`links`**: Used to add additional link tags in the HTML `<head>`.
+  - **`rel`**: The relationship type of the link (e.g., `icon`, `apple-touch-icon`).
+  - **`type`**: The MIME type of the icon.
+  - **`href`**: The path to the icon file.
+  - **`sizes`**: The size of the icon (optional).
+
 ## ✍️ Post Settings
 
 ```yaml
@@ -76,9 +100,11 @@ startYear: 2017
 
 ```yaml
 anilist_username: zlasica
+anilist_anime_name_style: english
 ```
 
 - **`anilist_username`**: Your AniList username for the AniList widget (available at `/about/anime`), learn more about [Anilist](https://anilist.co/). (Leave empty to hide the anime list)
+- **`anilist_anime_name_style`**: The display style for AniList anime names, supporting `english`, `romaji`, and `native`.
 
 ## 🐦 Social Media Settings
 
