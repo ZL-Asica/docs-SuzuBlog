@@ -22,7 +22,7 @@
     "eslint-config-zl-asica": "^1.0.20",
     "eslint-plugin-format": "^1.0.2",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.4",
+    "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "vitepress": "^1.6.4"
   },
