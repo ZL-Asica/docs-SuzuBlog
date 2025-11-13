@@ -36,7 +36,6 @@ Open your browser and navigate to `http://localhost:3000` to preview your local 
 Before contributing, please make sure to read the following:
 
 1. [Code of Conduct](https://github.com/ZL-Asica/SuzuBlog?tab=coc-ov-file)
-
    - Ensure that you adhere to our community Code of Conduct by maintaining a friendly and professional attitude.
 
 2. [Contributing Guide](https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md)

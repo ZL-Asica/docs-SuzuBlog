@@ -36,7 +36,6 @@ pnpm dev
 在开始贡献之前，请务必阅读以下内容：
 
 1. [代码行为规范 (Code of Conduct)](https://github.com/ZL-Asica/SuzuBlog?tab=coc-ov-file)
-
    - 请确保你在贡献过程中遵守我们的社区行为规范，保持友好和专业。
 
 2. [贡献指南 (Contributing Guide)](https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md)

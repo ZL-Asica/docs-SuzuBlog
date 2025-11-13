@@ -7,10 +7,4 @@ export default antfu({
   typescript: {
     tsconfigPath: 'tsconfig.json',
   },
-  lessOpinionated: true,
-}, {
-  files: ['docs/.vitepress/theme/**/*.ts'],
-  rules: {
-    'ts/no-unsafe-assignment': 'off',
-  },
 })

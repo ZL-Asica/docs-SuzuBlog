@@ -1,17 +1,16 @@
 {
   "name": "docs-suzublog",
-  "version": "1.11.4",
+  "version": "1.11.5",
   "private": true,
-  "packageManager": "pnpm@10.18.3",
+  "packageManager": "pnpm@10.22.0",
   "scripts": {
-    "docs:dev": "vitepress dev docs --open --host --port 4000",
+    "docs:dev": "vitepress dev docs --port 4000",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs --open --host --port 4000",
-    "format": "prettier --write .",
+    "docs:preview": "vitepress preview docs --port 4000",
     "lint": "eslint . --ignore-pattern docs/.vitepress/cache",
     "lint:fix": "eslint --fix . --ignore-pattern docs/.vitepress/cache",
     "commitlint": "commitlint --edit",
-    "prepare": "husky"
+    "postinstall": "husky || true"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.0.0",
@@ -19,12 +18,14 @@
     "@commitlint/config-conventional": "^20.0.0",
     "@eslint-react/eslint-plugin": "^2.2.2",
     "eslint": "^9.38.0",
-    "eslint-config-zl-asica": "^1.0.20",
     "eslint-plugin-format": "^1.0.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.4",
     "prettier": "^3.6.2",
-    "vitepress": "^1.6.4"
+    "vitepress": "2.0.0-alpha.13",
+    "vue": "^3.5.24"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,vue,css,json}": [
