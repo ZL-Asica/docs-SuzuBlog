@@ -25,6 +25,7 @@ redirect: /example-redirect # Redirect URL (optional)
 showComments: true # Show comments (optional)
 showLicense: true # Show license statement (optional)
 autoSlug: true # Automatically generate hierarchical paths (optional)
+status: published # Post status (optional)
 ---
 ```
 
@@ -72,6 +73,34 @@ autoSlug: true # Automatically generate hierarchical paths (optional)
 - **`showLicense`**: Determines whether to display the post's copyright license. Default is `true`.
 - **`showThumbnail`**: Determines whether to display the post's thumbnail. Default is `true`.
 - **`autoSlug`**: Automatically generates hierarchical paths for the post. Default is `true`. (If set to `false`, the post’s slug will be derived from the title inside the Markdown file instead.)
+- **`status`**: Post visibility status. It controls whether a post page is generated, whether it shows up in listings, and whether crawlers/search engines are allowed to index it.
+
+  Supported values (defaults to `published` if omitted):
+  - **`published` (default)**: Publicly published
+    - ✅ The post page is generated
+    - ✅ Visible in the `/posts` listing
+    - ✅ Included in RSS / sitemap / LLMs.txt (and other site indexing entry points)
+    - ✅ Search engines may index it (`index`)
+  - **`unlisted`**: Publicly accessible, but not distributed (only visible if you know the URL)
+    - ✅ The post page is generated (direct URL access works)
+    - ❌ Hidden from the `/posts` listing
+    - ❌ Excluded from RSS / sitemap / LLMs.txt
+    - 🚫 Not indexed by search engines by default (`noindex`)
+  - **`draft`**: Work-in-progress (not ready to publish)
+    - 🚫 Not generated in production by default (visiting the URL returns **404**)
+    - ❌ Hidden from the `/posts` listing
+    - ❌ Excluded from RSS / sitemap / LLMs.txt
+    - 🚫 Not indexed by search engines (`noindex`)
+    - 💡 To preview drafts in a production-like build locally, set `ALLOW_DRAFTS=true` when building/running the site.
+  - **`hidden`**: Strong hidden (internal use / never meant to be public)
+    - 🚫 Not generated in production (visiting the URL returns **404**)
+    - ❌ Hidden from the `/posts` listing
+    - ❌ Excluded from RSS / sitemap / LLMs.txt
+    - 🚫 Not indexed by search engines (`noindex`)
+    - 💡 For local debugging only, set `ALLOW_HIDDEN=true` to render hidden posts.
+      ::: tip
+      `status` only controls page generation, discoverability, and indexing. It is **not an access control system**: if a page is publicly reachable (e.g., `published` or an accessible `unlisted` URL), anyone with the link can still view it.
+      :::
 
 ## ✂️ Excerpt Truncation
 

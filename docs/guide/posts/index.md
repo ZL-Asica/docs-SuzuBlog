@@ -23,6 +23,7 @@ redirect: /example-redirect # 重定向地址（可选）
 showComments: true # 是否显示评论（可选）
 showLicense: true # 是否显示版权声明（可选）
 autoSlug: true # 是否自动生成层级路径（可选）
+status: published # 文章状态（可选）
 ---
 ```
 
@@ -70,6 +71,35 @@ autoSlug: true # 是否自动生成层级路径（可选）
 - **`showLicense`**: 是否显示文章的版权声明，默认为 `true`。
 - **`showThumbnail`**: 是否显示文章的缩略图，默认为 `true`。
 - **`autoSlug`**: 是否自动生成文章的层级路径，默认为 `true`。（若设置为 `false`，将不会自动生成文章的层级路径，而是使用 markdown 文件内的标题）
+- **`status`**: 文章状态，用于控制文章是否生成页面、是否在列表展示、以及是否会被爬虫/搜索引擎收录。
+
+  可选值如下（不填写时默认为 `published`）：
+  - **`published`（默认）**：正常发布
+    - ✅ 会生成文章页面
+    - ✅ 会出现在 `/posts` 列表
+    - ✅ 会进入 RSS / sitemap / LLMs.txt 等站点索引入口
+    - ✅ 搜索引擎可收录（index）
+  - **`unlisted`**：可访问但不公开分发（“知道链接才能看到”）
+    - ✅ 会生成文章页面（可通过 URL 直接访问）
+    - ❌ 不会出现在 `/posts` 列表
+    - ❌ 不会进入 RSS / sitemap / LLMs.txt
+    - 🚫 默认不会被搜索引擎收录（noindex）
+  - **`draft`**：草稿（未完成/待修改）
+    - 🚫 默认不会在生产环境生成页面（访问会 404）
+    - ❌ 不会出现在 `/posts` 列表
+    - ❌ 不会进入 RSS / sitemap / LLMs.txt
+    - 🚫 不会被搜索引擎收录（noindex）
+    - 💡 如需在本地以“接近生产”的方式预览草稿，可在构建/运行时设置环境变量 `ALLOW_DRAFTS=true`。
+  - **`hidden`**：强隐藏（内部用/永久不公开）
+    - 🚫 不会在生产环境生成页面（访问会 404）
+    - ❌ 不会出现在 `/posts` 列表
+    - ❌ 不会进入 RSS / sitemap / LLMs.txt
+    - 🚫 不会被搜索引擎收录（noindex）
+    - 💡 仅用于本地调试时可设置环境变量 `ALLOW_HIDDEN=true` 进行渲染预览。
+
+  ::: tip
+  `status` 只控制“是否生成页面 / 是否出现在站点入口 / 是否允许收录”，**不是权限系统**：如果你把内容发布到公网（例如 `published` 或可访问的 `unlisted`），任何拿到链接的人仍然可以访问。
+  :::
 
 ## ✂️ 文章摘要截断
 
