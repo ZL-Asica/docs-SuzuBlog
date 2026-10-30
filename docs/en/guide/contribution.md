@@ -1,73 +1,31 @@
-# 🙌 Get Involved
+# Contributing
 
-We warmly welcome all types of contributions! **SuzuBlog** is an open-source project, and we aim to provide a minimalist, powerful blogging template for the community. If you have ideas, suggestions, or bug reports, we’d love to have you join us!
+Submit code and feature changes to [SuzuBlog](https://github.com/ZL-Asica/SuzuBlog). Submit documentation changes to [docs-SuzuBlog](https://github.com/ZL-Asica/docs-SuzuBlog).
 
-## 🚀 Quick Start
+## Blog code
 
-### 1. Fork the Repository
+Read the [contribution guide](https://github.com/ZL-Asica/SuzuBlog/blob/v1.14.0/CONTRIBUTING.md) and [development guide](https://github.com/ZL-Asica/SuzuBlog/blob/v1.14.0/DEVELOPMENT.md). Fork the repository, work on a new branch, and run `pnpm lint:fix` and any relevant build checks before opening a PR.
 
-Click **Fork** on the [SuzuBlog GitHub repository](https://github.com/ZL-Asica/SuzuBlog/fork) to create a copy in your account.
+For new config fields, update `config.yml`, `src/schemas/config.ts`, and the docs together. Changes to content visibility need checks across pages, lists, search, RSS, sitemap, and LLM output.
 
-### 2. Clone the Repository Locally
-
-```bash
-git clone https://github.com/<your-username>/SuzuBlog.git
-cd SuzuBlog
-```
-
-### 3. Install Dependencies
-
-Use `pnpm` for dependency management:
+## Documentation
 
 ```bash
+git clone https://github.com/your-username/docs-SuzuBlog.git
+cd docs-SuzuBlog
 pnpm install
+pnpm docs:dev
 ```
 
-### 4. Start the Development Server
+Open `http://localhost:4000`. The docs use VitePress. Chinese pages live in `docs` and English pages in `docs/en`.
+
+Update both languages and keep settings, examples, and feature descriptions aligned. Describe the action and its result, and remove repetition. Before submitting, run:
 
 ```bash
-pnpm dev
+pnpm lint:fix
+pnpm docs:build
 ```
 
-Open your browser and navigate to `http://localhost:3000` to preview your local version.
+## Report a problem
 
-## 📋 Contribution Guidelines
-
-Before contributing, please make sure to read the following:
-
-1. [Code of Conduct](https://github.com/ZL-Asica/SuzuBlog?tab=coc-ov-file)
-   - Ensure that you adhere to our community Code of Conduct by maintaining a friendly and professional attitude.
-
-2. [Contributing Guide](https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md)
-   - This guide outlines how to contribute to the project, including how to submit issues, the Pull Request process, and coding standards.
-
-## 🌟 Contributors
-
-A huge thank you to everyone who has contributed to SuzuBlog! Your support makes this project stronger ❤️
-
-![Contributors](https://contrib.rocks/image?repo=ZL-Asica/SuzuBlog)
-
-Check out the latest [contributors](https://github.com/ZL-Asica/SuzuBlog/graphs/contributors) here.
-
-## 💡 How to Contribute
-
-### Report Bugs or Suggest Features
-
-- Submit bug reports via [Issues](https://github.com/ZL-Asica/SuzuBlog/issues).
-- Follow the Issue template.
-- Please include as much detail as possible:
-  - A clear description of the bug.
-  - Steps to reproduce the issue.
-  - Any relevant screenshots or logs.
-- If you have feature suggestions, feel free to open an issue to share your ideas.
-
-### Submit Code
-
-- Implement your changes locally and create a Pull Request.
-- Ensure that your code follows the project's standards outlined in the [Contributing Guide](https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md).
-
-## 📬 Contact
-
-If you have any questions about contributing, feel free to reach out via [GitHub Issues](https://github.com/ZL-Asica/SuzuBlog/issues) or email us.
-
-We look forward to your contributions! 💖
+Include the version, minimal reproduction steps, and relevant logs. Add screenshots for UI issues. Send security-sensitive reports to <zl@zla.app>.

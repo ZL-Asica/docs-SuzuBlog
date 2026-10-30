@@ -14,7 +14,7 @@ const sharedThemeConfig = {
   footer: {
     message: {
       zh: '此文档基于 CC BY 4.0 进行授权',
-      en: 'This docs Licensed under CC BY 4.0',
+      en: 'Documentation licensed under CC BY 4.0',
     },
     copyright: {
       zh: '©️ 2024-Present <a href="https://zla.pub" target="_blank">ZL Asica</a> 版权所有',
@@ -22,7 +22,7 @@ const sharedThemeConfig = {
     },
   },
   editLink: {
-    patter: 'https://github.com/ZL-Asica/docs-SuzuBlog/edit/main/docs/:path',
+    pattern: 'https://github.com/ZL-Asica/docs-SuzuBlog/edit/main/docs/:path',
   },
 }
 
@@ -34,7 +34,7 @@ const sharedHeadConfig = {
     ],
     [
       'meta',
-      { name: 'keywords', content: 'SuzuBlog, 文档, VuePress, Next.js' },
+      { name: 'keywords', content: 'SuzuBlog, 文档, VitePress, Next.js' },
     ],
     [
       'meta',
@@ -48,7 +48,7 @@ const sharedHeadConfig = {
     ],
     [
       'meta',
-      { name: 'keywords', content: 'SuzuBlog, Docs, VuePress, Next.js' },
+      { name: 'keywords', content: 'SuzuBlog, Docs, VitePress, Next.js' },
     ],
     [
       'meta',
@@ -60,7 +60,7 @@ const sharedHeadConfig = {
 const sharedNavConfig = {
   zh: [
     { text: '首页', link: '/' },
-    { text: '指南', link: '/guide' },
+    { text: '指南', link: '/guide/' },
     {
       text: `v${pkg.version}`,
       items: [
@@ -71,12 +71,12 @@ const sharedNavConfig = {
   ] as DefaultTheme.NavItem[],
   en: [
     { text: 'Home', link: '/en/' },
-    { text: 'Guide', link: '/en/guide' },
+    { text: 'Guide', link: '/en/guide/' },
     {
       text: `v${pkg.version}`,
       items: [
         { text: 'Releases', link: 'https://github.com/ZL-Asica/SuzuBlog/releases' },
-        { text: 'Contribution', link: 'https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md' },
+        { text: 'Contributing', link: 'https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md' },
       ],
     },
   ] as DefaultTheme.NavItem[],
@@ -94,7 +94,7 @@ const sharedSidebarConfig = {
     {
       text: '配置文件',
       items: [
-        { text: 'config.yml', link: '/guide/config' },
+        { text: 'config.yml', link: '/guide/config/' },
       ],
     },
     {
@@ -123,7 +123,7 @@ const sharedSidebarConfig = {
     {
       text: 'Config Files',
       items: [
-        { text: 'config.yml', link: '/en/guide/config' },
+        { text: 'config.yml', link: '/en/guide/config/' },
       ],
     },
     {
@@ -137,7 +137,7 @@ const sharedSidebarConfig = {
     },
     {
       items: [
-        { text: 'Contribution', link: '/en/guide/contribution' },
+        { text: 'Contributing', link: '/en/guide/contribution' },
       ],
     },
   ],
@@ -217,7 +217,7 @@ export default defineConfig({
         },
         editLink: {
           text: '在 GitHub 上编辑此页',
-          pattern: sharedThemeConfig.editLink.patter,
+          pattern: sharedThemeConfig.editLink.pattern,
         },
       },
     },
@@ -225,6 +225,7 @@ export default defineConfig({
       label: 'English',
       lang: 'en-US',
       link: '/en/',
+      head: sharedHeadConfig.en,
       themeConfig: {
         nav: sharedNavConfig.en,
         sidebar: sharedSidebarConfig.en,
@@ -235,7 +236,7 @@ export default defineConfig({
           copyright: sharedThemeConfig.footer.copyright.en,
         },
         editLink: {
-          pattern: sharedThemeConfig.editLink.patter,
+          pattern: sharedThemeConfig.editLink.pattern,
         },
       },
     },

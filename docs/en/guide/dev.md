@@ -1,112 +1,54 @@
-# 💻 Local Development Guide
+# Local development
 
-SuzuBlog can run without local development. However, if you'd like to preview how your articles will be rendered on the site before publishing, setting up a local development environment is recommended.
+## Setup
 
-## 1. Environment & Tool Setup
-
-You may skip any or all of the following steps if you're certain your local environment already meets the requirements:
-
-```plaintext
-Node.js >= 20
-git
-pnpm
-```
-
-### 1.1 Install Node.js
-
-Check if Node.js is installed by running:
+Install Git, use Node.js 24 as specified in `.node-version`, and use pnpm 12.16.1 from `package.json`.
 
 ```bash
-node --version
-```
-
-If you see a version like `v22.0.0`, you're good to go. Otherwise, please install Node.js.
-
-We recommend using the latest LTS version:
-
-- **macOS/Linux**: Use `nvm` for version management
-- **Windows**: Use `WSL` or the installer directly
-
-👉 [Download Node.js](https://nodejs.org/en/download)
-
-### 1.2 Install Git
-
-Make sure Git is installed before cloning the repository:
-
-```bash
-git --version
-```
-
-If the output looks like `git version 2.40.0`, Git is installed. If not, download it here:
-
-👉 [Download Git](https://git-scm.com/downloads)
-
-### 1.3 Clone the Repository
-
-Run the following command in your terminal to clone the project locally:
-
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-```
-
-### 1.4 Install pnpm
-
-SuzuBlog uses `pnpm` as the package manager. To check if it’s installed:
-
-```bash
-pnpm --version
-```
-
-If it's not installed, you can install it using `corepack`:
-
-```bash
-npm install --global corepack@latest
-corepack enable pnpm
-```
-
-For more help, see the official docs:
-
-👉 [pnpm Installation Guide](https://pnpm.io/installation)
-
-## 2. Install Dependencies
-
-In the project directory, run:
-
-```bash
+npm install --global pnpm@12.16.1
+git clone https://github.com/your-username/your-blog.git
+cd your-blog
 pnpm install
-```
-
-## 3. Start the Local Development Server
-
-To launch the development environment:
-
-```bash
 pnpm dev
 ```
 
-Then visit `http://localhost:3000` in your browser to preview the site.
+Open `http://localhost:3000`.
 
-## 4. Build & Preview Production Version
+## Commands
 
-To simulate the production environment and preview the final build:
+| Command         | Purpose                                   |
+| --------------- | ----------------------------------------- |
+| `pnpm dev`      | Start the Next.js development server      |
+| `pnpm lint`     | Check code                                |
+| `pnpm lint:fix` | Check code and apply formatting fixes     |
+| `pnpm build`    | Run `lint:fix`, then build for production |
+| `pnpm start`    | Serve the production build                |
 
 ```bash
 pnpm build
 pnpm start
 ```
 
-Visit `http://localhost:3000` again to view the result.
+The production preview also runs at `http://localhost:3000`. Self-hosting requires a Next.js runtime and process management.
 
-## 5. Additional Commands
+## Files
 
-- **Lint your code:**
+| Path                      | Contents                                             |
+| ------------------------- | ---------------------------------------------------- |
+| `config.yml`              | Site settings                                        |
+| `posts/*.md`              | Blog posts                                           |
+| `posts/_pages/About.md`   | About page                                           |
+| `posts/_pages/Friends.md` | Friends page                                         |
+| `public/images`           | Images referenced as `/images/...`                   |
+| `src/app`                 | Routes and metadata                                  |
+| `src/components`          | UI components and Markdown rendering                 |
+| `src/services`            | Config loading, content loading, and generated files |
+| `src/styles`              | Theme and styles                                     |
 
-  ```bash
-  pnpm lint
-  ```
+`pnpm build` generates `public/feed.xml`, `public/llms.txt`, and `public/llms-full.txt`. Review changes to these files before committing. RSS generation depends on `socialMedia.rss`, as described in [site configuration](./config/).
 
-- **Auto-fix code style issues:**
+## Validate changes
 
-  ```bash
-  pnpm lint:fix
-  ```
+Run `pnpm lint:fix` before committing. Also run `pnpm build` after changing configuration, routes, content processing, or UI. The project currently has no test script.
+
+When changing config fields, update both `config.yml` and `src/schemas/config.ts`. See the [contribution guide](https://github.com/ZL-Asica/SuzuBlog/blob/v1.14.0/CONTRIBUTING.md) for development conventions.

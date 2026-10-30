@@ -1,50 +1,44 @@
-# `config.yml`
+# config.yml
 
-This document provides a step-by-step explanation of the **`config.yml`** file to help you quickly set up and customize SuzuBlog.
+Site settings live in `config.yml` at the project root and are validated with Zod. Field names are case-sensitive. Rebuild and redeploy after editing. See the [1.14.0 config file](https://github.com/ZL-Asica/SuzuBlog/blob/v1.14.0/config.yml) for a complete example.
 
-## 📝 Site Settings
+## Site identity
 
 ```yaml
 title: Suzu
-subTitle: Next.js Blog Template
-description: "Suzu is a minimalist blog template with a serene sakura-inspired theme, blending modern design with a touch of traditional Japanese aesthetics."
-keywords: "Suzu, Next.js, markdown blog, Tailwind CSS, blog template, sakura, ZL Asica"
+subTitle: My blog
+description: Notes on everyday life and development
+keywords: 'Suzu, blog, Next.js'
 author:
-  name: ZL Asica
-  link: "https://www.zla.pub"
-lang: zh
-siteUrl: "https://www.zla.pub"
-```
-
-### Explanation
-
-- **`title`**: The name of your blog, displayed in the title and `meta` tags. It's also used as the default social sharing title and site name.
-- **`subTitle`**: The subtitle of your site, typically used as a brief description that doesn't appear in the header.
-- **`description`**: A detailed description of your site, shown in search engine summaries. Recommended length is 50-150 characters.
-- **`keywords`**: Comma-separated keywords for SEO purposes. Recommended to include 3-5 keywords.
-- **`author`**: Includes the author's name and personal link.
-- **`lang`**: The language code (e.g., `zh` for Chinese, `en` for English, `ja` for Japanese).
-- **`siteUrl`**: The public root URL of your site **(do not include a trailing slash)**.
-
-## 🖼️ Images and Visual Elements
-
-```yaml
+  name: Your name
+  link: https://example.com
+lang: en
+siteUrl: https://blog.example.com
 avatar: /images/avatar.jpg
 background: /images/background.jpg
-slogan: "As long as the code or the developer is able to run, it's all good."
-googleAnalytics: G-659VZ9NH28
+slogan: Notes from my day
+googleAnalytics:
 ```
 
-::: tip
-📌 **Relative Paths**: Relative paths are relative to the `public` directory. For example, `/images/avatar.jpg` represents `public/images/avatar.jpg`.
-:::
+| Field                        | Purpose                                                          |
+| ---------------------------- | ---------------------------------------------------------------- |
+| `title`                      | Site name                                                        |
+| `subTitle`                   | Subtitle                                                         |
+| `description`                | Default description and SEO summary                              |
+| `keywords`                   | Comma-separated keywords, optional                               |
+| `author.name`, `author.link` | Author name and full personal website URL                        |
+| `lang`                       | BCP 47 language tag such as `zh-CN`, `en`, or `ja`. Default `en` |
+| `siteUrl`                    | Public origin without a trailing slash                           |
+| `avatar`                     | Homepage avatar                                                  |
+| `background`                 | Fallback image for posts without a thumbnail                     |
+| `slogan`                     | Text below the homepage avatar, up to 100 characters             |
+| `googleAnalytics`            | Tracking ID such as `G-XXXXXXXXXX`. Leave empty to disable       |
 
-- **`avatar`**: Path to the avatar image. This can be a relative path or a full URL.
-- **`background`**: The default background image used when posts lack individual thumbnails.
-- **`slogan`**: A slogan displayed on your homepage below the avatar.
-- **`googleAnalytics`**: The Google Analytics tracking ID (optional, for traffic analytics).
+Place local images in `public/images` and reference them as `/images/...`. Full HTTPS image URLs also work.
 
-## 🌐 HTML Head Settings
+`lang` controls interface text and page language attributes. Chinese, English, and Japanese translations are included. Other languages fall back to English. This setting does not translate posts or create language-specific routes.
+
+## Icons and head links
 
 ```yaml
 links:
@@ -60,90 +54,82 @@ links:
     sizes: 180x180
 ```
 
-You can set multiple link tags in the `<head>` section, typically used for adding site icons and other resources.
+Each entry becomes an HTML `<link>` tag. `rel` and `href` are required. `type` and `sizes` are optional. Place the example files in `public/icons`.
 
-- **`links`**: Used to add additional link tags in the HTML `<head>`.
-  - **`rel`**: The relationship type of the link (e.g., `icon`, `apple-touch-icon`).
-  - **`type`**: The MIME type of the icon.
-  - **`href`**: The path to the icon file.
-  - **`sizes`**: The size of the icon (optional).
-
-## ✍️ Post Settings
+## Posts and footer
 
 ```yaml
 postsPerPage: 5
 creativeCommons:
-  type: CC BY-SA 4.0 Deed
-  link: https://creativecommons.org/licenses/by-sa/4.0/deed.en
+  type: CC BY-SA 4.0
+  link: https://creativecommons.org/licenses/by-sa/4.0/
+travellings: false
+startYear: 2024
 ```
 
-- **`postsPerPage`**: The number of posts displayed per page. (Default/empty is 5, maximum is 15)
-- **`creativeCommons`**: Configures the default license for posts, such as `CC BY-SA 4.0`. Links to the corresponding license page.
+| Field             | Purpose                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| `postsPerPage`    | Posts per page, from 1 to 15. Defaults to 5 when omitted or empty                           |
+| `creativeCommons` | Content license name and full URL                                                           |
+| `travellings`     | Show the [Travellings](https://www.travellings.cn/) link                                    |
+| `startYear`       | Footer start year, from 1900 to the current year. Leave empty to show only the current year |
 
-## 📌 Header Settings
+Use `showLicense: false` in a post to hide its license notice.
 
-```yaml
-travellings: true
-```
-
-- **`travellings`**: Whether you want to join the Travellings community. For more information, visit the [Travellings website](https://www.travellings.cn/en_US/) (set to `false` if you don't need the friend link feature).
-
-## 🔚 Footer Settings
+## Anime list
 
 ```yaml
-startYear: 2017
-```
-
-- **`startYear`**: The year your blog was established (optional). If not set, only the current year will be displayed.
-
-## 📄 Pages Settings
-
-```yaml
-anilist_username: zlasica
+anilist_username: your-username
 anilist_anime_name_style: english
 ```
 
-- **`anilist_username`**: Your AniList username for the AniList widget (available at `/about/anime`), learn more about [Anilist](https://anilist.co/). (Leave empty to hide the anime list)
-- **`anilist_anime_name_style`**: The display style for AniList anime names, supporting `english`, `romaji`, and `native`.
+`anilist_username` supplies the list at `/about/anime`. Leave it empty to hide the list. Name styles are `english`, `romaji`, and `native`. When unset, Japanese sites use `native` and other languages use `english`. Missing names fall back to `romaji`.
 
-## 🐦 Social Media Settings
+## Social links and RSS
 
 ```yaml
 socialMedia:
-  github_username: ZL-Asica
-  linkedin_username: elara-liu
-  instagram_id: zl_asica
-  # Other available fields
-  email: zl@zla.app
+  github_username: your-username
+  linkedin_username:
+  instagram_id:
+  orcid_id:
+  telegram_username:
+  bluesky_username:
+  youtube_id:
+  zhihu_username:
+  bilibili_id:
+  email: hello@example.com
   rss: true
 ```
 
-- Add links to your social media accounts.
-- Leave fields empty to hide specific icons.
-- Supported platforms include GitHub, LinkedIn, Instagram, ORCID, Telegram, Bluesky, YouTube, Bilibili, Zhihu, and more.
+Enter usernames or IDs. Empty fields hide their icons. Use the `0000-0000-0000-0000` format for `orcid_id` and a full address for `email`.
 
-## 💬 Comments Settings (Disqus)
+`rss` has three settings:
+
+| Value   | Result                                 |
+| ------- | -------------------------------------- |
+| `true`  | Generate `/feed.xml` and show its icon |
+| `false` | Generate the feed and hide its icon    |
+| Empty   | Skip feed generation and hide its icon |
+
+The build also generates `/llms.txt` and `/llms-full.txt`. Posts in RSS, sitemap, and LLM files are limited to `published` content. After disabling RSS, check for and remove any previously generated `public/feed.xml`.
+
+## Comments
 
 ```yaml
-twikooEnvId: https://xxx.vercel.app
-disqusShortname: zla-pub
+twikooEnvId: https://comments.example.com
+disqusShortname:
 ```
 
-- **`twikooEnvId`**: The Twikoo backend deployment address. Refer to the [Twikoo documentation](https://twikoo.js.org/) for details.
-- **`disqusShortname`**: The shortname used to integrate the Disqus comment system (can be found in your Disqus account).
+Set `twikooEnvId` to the full Twikoo service URL or set `disqusShortname` to your Disqus site shortname. Twikoo takes priority when both are set. Leave both empty to disable comments. Use `showComments: false` in an individual post or page to disable its comments.
 
-## 🔧 Custom Code Blocks
-
-::: danger
-❗️ Use custom code with caution to ensure correctness and security.
-:::
+## Custom code
 
 ```yaml
 headerJavascript:
   - /scripts/custom.js
 slotFooter: |
-  <!-- Add your custom footer HTML here -->
+  <p>Custom footer</p>
 ```
 
-- **`headerJavascript`**: Custom JavaScript files to be included in the `<head>` section.
-- **`slotFooter`**: Custom HTML code to be included in the `<footer>` section.
+Each `headerJavascript` entry is a script URL or a root-relative path under `public`. For example, `public/scripts/custom.js` is referenced as `/scripts/custom.js`. `slotFooter` inserts HTML into the footer. Use trusted content only.

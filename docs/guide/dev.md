@@ -1,112 +1,54 @@
-# 💻 本地开发指南
+# 本地开发
 
-SuzuBlog 支持无需本地环境即可运行。但如果你希望在发布前预览文章在网站上的最终呈现效果，可以选择在本地进行开发与预览。
+## 环境
 
-## 1. 环境与工具准备
-
-如果你已经具备以下开发环境，也可以跳过本部分：
-
-```plaintext
-Node.js >= 20
-git
-pnpm
-```
-
-### 1.1 安装 Node.js
-
-在终端（cmd/Powershell）中运行以下命令检查是否已安装 Node.js：
+安装 Git，使用仓库 `.node-version` 指定的 Node.js 24 和 `package.json` 指定的 pnpm 12.16.1。
 
 ```bash
-node --version
-```
-
-若显示类似 `v22.0.0` 的版本号，说明已安装；否则请前往官网安装。
-
-推荐使用最新版 LTS：
-
-- **macOS/Linux** 推荐使用 `nvm` 管理
-- **Windows** 推荐试用 `WSL` 或直接使用 installer 安装
-
-👉 [Node.js 官方下载地址](https://nodejs.org/en/download)
-
-### 1.2 安装 Git
-
-在 clone 仓库前，请确认已安装 Git。运行：
-
-```bash
-git --version
-```
-
-若输出类似 `git version 2.40.0`，说明已安装；否则请前往官网安装：
-
-👉 [Git 官方下载地址](https://git-scm.com/downloads)
-
-### 1.3 克隆项目仓库
-
-在终端中运行以下命令，将仓库克隆到本地：
-
-```bash
-git clone https://github.com/你的用户名/你的仓库名.git
-```
-
-### 1.4 安装 pnpm
-
-SuzuBlog 使用 `pnpm` 作为包管理工具。运行以下命令检查是否已安装：
-
-```bash
-pnpm --version
-```
-
-若未安装，可以使用 `corepack` 安装：
-
-```bash
-npm install --global corepack@latest
-corepack enable pnpm
-```
-
-若遇问题，可参考官方文档：
-
-👉 [pnpm 安装指南](https://pnpm.io/installation)
-
-## 2. 安装依赖
-
-在项目目录下运行：
-
-```bash
+npm install --global pnpm@12.16.1
+git clone https://github.com/your-username/your-blog.git
+cd your-blog
 pnpm install
-```
-
-## 3. 启动本地开发服务器
-
-启动开发环境：
-
-```bash
 pnpm dev
 ```
 
-浏览器访问 `http://localhost:3000` 即可预览本地网站。
+打开 `http://localhost:3000`。
 
-## 4. 构建与预览发布效果
+## 常用命令
 
-如需模拟正式发布后的效果，可运行：
+| 命令            | 用途                              |
+| --------------- | --------------------------------- |
+| `pnpm dev`      | 启动 Next.js 开发服务器           |
+| `pnpm lint`     | 检查代码                          |
+| `pnpm lint:fix` | 检查并修复代码格式                |
+| `pnpm build`    | 先运行 `lint:fix`，再构建生产版本 |
+| `pnpm start`    | 启动已构建的生产版本              |
 
 ```bash
 pnpm build
 pnpm start
 ```
 
-同样访问 `http://localhost:3000` 查看效果。
+生产预览同样使用 `http://localhost:3000`。部署到自己的服务器时，需要保留 Next.js 运行环境并配置进程管理。
 
-## 5. 常用命令补充
+## 文件位置
 
-- **代码检查：**
+| 路径                      | 内容                          |
+| ------------------------- | ----------------------------- |
+| `config.yml`              | 站点设置                      |
+| `posts/*.md`              | 文章                          |
+| `posts/_pages/About.md`   | 关于页面                      |
+| `posts/_pages/Friends.md` | 友链页面                      |
+| `public/images`           | 图片，通过 `/images/...` 引用 |
+| `src/app`                 | 路由和元数据                  |
+| `src/components`          | 界面组件和 Markdown 渲染      |
+| `src/services`            | 配置读取、内容读取和生成文件  |
+| `src/styles`              | 主题和样式                    |
 
-  ```bash
-  pnpm lint
-  ```
+`pnpm build` 会生成 `public/feed.xml`、`public/llms.txt` 和 `public/llms-full.txt`。提交前检查这些文件的变化。RSS 生成取决于 `socialMedia.rss`，详见 [站点配置](./config/)。
 
-- **自动修复格式：**
+## 检查修改
 
-  ```bash
-  pnpm lint:fix
-  ```
+提交前运行 `pnpm lint:fix`。修改配置、路由、内容处理或界面后，再运行 `pnpm build`。项目目前没有测试脚本。
+
+修改配置字段时，同时更新 `config.yml` 和 `src/schemas/config.ts`。更多开发约定见 [贡献指南](https://github.com/ZL-Asica/SuzuBlog/blob/v1.14.0/CONTRIBUTING.md)。

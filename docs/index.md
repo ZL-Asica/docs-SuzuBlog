@@ -1,39 +1,29 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: SuzuBlog Docs
-  text: 全面的文档指南
-  tagline: 帮助你快速设置、定制和最大化 SuzuBlog 的潜力 🚀
+  text: 搭建和维护你的博客
+  tagline: SuzuBlog 1.14.0 · Next.js 与 Markdown 博客模板
   actions:
     - theme: brand
-      text: 快速开始 ✨
-      link: /guide
+      text: 快速开始
+      link: /guide/
     - theme: alt
-      text: 开始写文章 📖
-      link: /guide/posts/
-    - theme: brand
-      text: 查看示例 🚀
+      text: Markdown 语法
+      link: /guide/posts/grammar
+    - theme: alt
+      text: 查看示例
       link: https://zla.pub
 
 features:
-  - icon: 🛠️
-    title: 简单安装
-    details: 通过详细的设置指南，几分钟内即可启动 SuzuBlog。
-  - icon: 🎨
-    title: 高度可定制
-    details: 根据你的需求灵活调整，打造独一无二的博客体验。
-  - icon: 💻
-    title: 开发者友好
-    details: 基于现代工具如 Next.js、TypeScript 和 Markdown，简化开发流程。
-  - icon: 🌐
-    title: SEO 优化
-    details: 内置的 SEO 支持，让你的博客在搜索引擎中更具竞争力。
-  - icon: 🌸
-    title: 精美主题
-    details: 享受以樱花为灵感的美观、响应式设计。
-  - icon: ❤️
-    title: 活跃支持
-    details: 加入我们的社区，或联系我们获得帮助和更新。
+  - title: 站点配置
+    details: 在 config.yml 中设置站点信息、社交链接和评论服务。
+    link: /guide/config/
+  - title: 文章和页面
+    details: 使用 Markdown 写作，通过 Frontmatter 管理标题、摘要和文章状态。
+    link: /guide/posts/
+  - title: 图片和图库
+    details: 使用网格或轮播展示图片，点击图片可放大查看。
+    link: /guide/posts/grammar#图库
 ---

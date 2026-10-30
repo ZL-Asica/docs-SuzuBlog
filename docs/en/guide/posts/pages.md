@@ -1,25 +1,27 @@
-# 📄 Special Configuration for the `_pages` Folder
+# About and friends pages
 
-Files inside the **`_pages` folder** (such as "About" and "Friends") require a different configuration than regular articles and do not use standard Frontmatter settings.
+`posts/_pages/About.md` serves `/about`, and `posts/_pages/Friends.md` serves `/friends`. Filenames are case-sensitive. Other files in this folder do not create routes automatically.
 
-Example:
+Pages use the same Markdown renderer as posts, including [extended syntax](./grammar).
 
 ```yaml
 ---
-title: "" # (Optional) Defaults to "About"
-thumbnail: "" # (Optional) Page thumbnail
-showComments: false # Whether to display the comment section
-showLicense: false # Whether to display the copyright statement
-showThumbnail: false # Whether to display the thumbnail
+title: About me
+thumbnail: /images/about.jpg
+showComments: false
+showLicense: false
+showThumbnail: false
+autoSlug: false
 ---
 ```
 
-## 🛠️ Explanation of Frontmatter Fields
+| Field           | Purpose                                                                                |
+| --------------- | -------------------------------------------------------------------------------------- |
+| `title`         | Page title. Falls back to the filename when omitted. Does not change navigation labels |
+| `thumbnail`     | Page image. Falls back to the global `background`. An empty string clears it           |
+| `showComments`  | Show comments, default `true`                                                          |
+| `showLicense`   | Show the license notice, default `true`                                                |
+| `showThumbnail` | Show the thumbnail, default `true`                                                     |
+| `autoSlug`      | Show hierarchical numbering before body headings, default `true`                       |
 
-All fields are optional.
-
-- **`title`**: The title of the page, which will appear in the page title and navigation bar. You can set any text (default is "About").
-- **`thumbnail`**: The thumbnail image path for the page, which can be a relative path or a full URL. (If not set, no thumbnail will be displayed.)
-- **`showComments`**: Determines whether to show the comment section. Default is `true`. (If set to `false`, the comment section will be hidden.)
-- **`showLicense`**: Determines whether to display the copyright statement. Default is `true`. (If set to `false`, the copyright statement will not be shown.)
-- **`showThumbnail`**: Determines whether to display the thumbnail. Default is `true`. (If set to `false`, the thumbnail will not be shown.)
+Keep the fixed paths. `status` does not control access to these pages, and `redirect` does not redirect them. See [friends](./friends) for link cards.

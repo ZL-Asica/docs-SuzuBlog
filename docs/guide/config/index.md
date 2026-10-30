@@ -1,48 +1,44 @@
-# `config.yml`
+# config.yml
 
-本文档将逐步介绍 **`config.yml`** 文件中的各项配置，帮助你快速设置和定制 SuzuBlog。
+站点设置保存在项目根目录的 `config.yml`，由 Zod 校验。修改后重新构建部署，字段名区分大小写。完整示例见 [1.14.0 的配置文件](https://github.com/ZL-Asica/SuzuBlog/blob/v1.14.0/config.yml)。
 
-## 📝 站点设置 (Site Settings)
+## 站点信息
 
 ```yaml
 title: Suzu
-subTitle: Next.js Blog Template
-description: "Suzu is a minimalist blog template with a serene sakura-inspired theme, blending modern design with a touch of traditional Japanese aesthetics."
-keywords: "Suzu, blog template, sakura, ZL Asica"
+subTitle: My blog
+description: 日常记录与技术笔记
+keywords: 'Suzu, blog, Next.js'
 author:
-  name: ZL Asica
-  link: "https://www.zla.pub"
-lang: zh
-siteUrl: "https://www.zla.pub"
-```
-
-- **`title`**: 站点名称，显示在标题和 `meta` 标签中，也是默认的社交分享标题与左上角的站点名称。
-- **`subTitle`**: 站点的副标题，通常用于补充描述，不会显示在左上角。
-- **`description`**: 网站的描述信息，出现在搜索引擎的摘要中，推荐 50-150 个字符。
-- **`keywords`**: 用逗号分隔的关键字，用于 SEO 优化，推荐 3-5 个关键词。
-- **`author`**: 包括作者的名字和个人链接。
-- **`lang`**: 语言代码（例如 `zh` 表示中文，`en` 表示英文，`ja` 表示日文）。
-- **`siteUrl`**: 网站的公共根 URL，用于生成 SEO 标签 **（请勿包含末尾的斜杠）**。
-
-## 🖼️ 图像和视觉元素
-
-```yaml
+  name: Your name
+  link: https://example.com
+lang: zh-CN
+siteUrl: https://blog.example.com
 avatar: /images/avatar.jpg
 background: /images/background.jpg
-slogan: "As long as the code or the developer is able to run, it's all good."
-googleAnalytics: G-659VZ9NH28
+slogan: 记录日常
+googleAnalytics:
 ```
 
-::: tip
-📌 **相对路径**：相对路径是相对于 `public` 目录的，例如 `/images/avatar.jpg` 表示 `public/images/avatar.jpg`。
-:::
+| 字段                         | 用途                                               |
+| ---------------------------- | -------------------------------------------------- |
+| `title`                      | 站点名称                                           |
+| `subTitle`                   | 副标题                                             |
+| `description`                | 默认描述和 SEO 摘要                                |
+| `keywords`                   | 逗号分隔的关键词，可留空                           |
+| `author.name`、`author.link` | 作者名称和个人主页完整 URL                         |
+| `lang`                       | BCP 47 语言标签，如 `zh-CN`、`en`、`ja`，默认 `en` |
+| `siteUrl`                    | 公开站点的根 URL，不带末尾斜杠                     |
+| `avatar`                     | 首页头像                                           |
+| `background`                 | 文章未设置缩略图时使用的图片                       |
+| `slogan`                     | 首页头像下方的文字，最多 100 个字符                |
+| `googleAnalytics`            | 跟踪 ID，如 `G-XXXXXXXXXX`，留空禁用               |
 
-- **`avatar`**: 头像图片路径，可以是相对路径或完整 URL。
-- **`background`**: 默认的背景图片路径，用于文章没有单独缩略图时显示。
-- **`slogan`**: 显示在首页头像下方的标语。
-- **`googleAnalytics`**: Google Analytics 跟踪 ID（可选，用于流量统计）。
+本地图片放在 `public/images`，引用时使用 `/images/...`。也可使用完整的 HTTPS 图片地址。
 
-## 🌐 HTML 头部设置(HTML head Settings)
+`lang` 控制界面文案和页面语言属性。内置中文、英文、日文文案，其他语言回退到英文。它不会翻译文章或创建多语言路由。
+
+## 图标和头部链接
 
 ```yaml
 links:
@@ -58,90 +54,82 @@ links:
     sizes: 180x180
 ```
 
-可以设置多个 head 中的链接标签，通常用于添加网站图标和其他资源。
+每项对应一个 HTML `<link>` 标签。`rel` 和 `href` 必填，`type` 和 `sizes` 可选。示例文件放在 `public/icons`。
 
-- **`links`**: 用于在 HTML `<head>` 中添加额外的链接标签。
-  - **`rel`**: 链接关系类型（如 `icon`、`apple-touch-icon`）。
-  - **`type`**: 图标的 MIME 类型。
-  - **`href`**: 图标的路径或 URL。
-  - **`sizes`**: 图标的尺寸（可选）。
-
-## ✍️ 文章设置 (Posts Settings)
+## 文章和页脚
 
 ```yaml
 postsPerPage: 5
 creativeCommons:
-  type: CC BY-SA 4.0 Deed
-  link: https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans
+  type: CC BY-SA 4.0
+  link: https://creativecommons.org/licenses/by-sa/4.0/
+travellings: false
+startYear: 2024
 ```
 
-- **`postsPerPage`**: 每页显示的文章数量。（默认/留空为 5，最大为 15）
-- **`creativeCommons`**: 配置文章默认的版权许可，例如 `CC BY-SA 4.0`，链接到相应的许可证页面。
+| 字段              | 用途                                           |
+| ----------------- | ---------------------------------------------- |
+| `postsPerPage`    | 每页文章数，范围 1–15，未设置或留空时使用 5    |
+| `creativeCommons` | 文章许可的名称和完整链接                       |
+| `travellings`     | 显示 [开往](https://www.travellings.cn/) 入口  |
+| `startYear`       | 页脚起始年份，范围 1900 至当年，留空只显示当年 |
 
-## 📌 页头设置 (Header Settings)
+文章可通过 `showLicense: false` 隐藏许可声明。
 
-```yaml
-travellings: true
-```
-
-- **`travellings`**: 开往！友链接力！一个友情链接助推计划，欢迎参与 [开往项目官网](https://www.travellings.cn/) (若不需要友链功能，可将此项设置为 `false`。)
-
-## 🔚 页脚设置 (Footer Settings)
+## 动画列表
 
 ```yaml
-startYear: 2017
-```
-
-- **`startYear`**: 你的博客开始年份（可选）。如果不设置，将只显示当前年份。
-
-## 📄 页面设置 (Pages Settings)
-
-```yaml
-anilist_username: zlasica
+anilist_username: your-username
 anilist_anime_name_style: english
 ```
 
-- **`anilist_username`**: 你的 AniList 用户名，用于显示你的动画列表（位于 `/about/anime` 页面），了解 [Anilist](https://anilist.co/)。（留空以隐藏动画列表）
-- **`anilist_anime_name_style`**: AniList 动画名称的显示风格，支持 `english`（英文）、`romaji`（罗马音）和 `native`（原名）。
+`anilist_username` 用于 `/about/anime`，留空隐藏列表。名称风格支持 `english`、`romaji`、`native`。未设置时，日语站点使用 `native`，其他语言使用 `english`，名称缺失时回退到 `romaji`。
 
-## 🐦 社交媒体设置 (Social Media Settings)
+## 社交链接和 RSS
 
 ```yaml
 socialMedia:
-  github_username: ZL-Asica
-  linkedin_username: elara-liu
-  instagram_id: zl_asica
-  # 其他支持的平台
-  email: zl@zla.app
+  github_username: your-username
+  linkedin_username:
+  instagram_id:
+  orcid_id:
+  telegram_username:
+  bluesky_username:
+  youtube_id:
+  zhihu_username:
+  bilibili_id:
+  email: hello@example.com
   rss: true
 ```
 
-- 为你的社交媒体账号添加链接。
-- 留空某些字段可以隐藏对应的社交图标。
-- 支持的平台包括 GitHub、LinkedIn、Instagram、ORCID、Telegram、Bluesky、YouTube、Bilibili、Zhihu 等。
+填写用户名或 ID，留空隐藏对应图标。`orcid_id` 使用 `0000-0000-0000-0000` 格式，`email` 填完整邮箱。
 
-## 💬 评论设置 (Comments Settings)
+`rss` 有三种设置：
+
+| 值      | 结果                        |
+| ------- | --------------------------- |
+| `true`  | 生成 `/feed.xml` 并显示图标 |
+| `false` | 生成 feed，隐藏图标         |
+| 留空    | 不生成 feed，隐藏图标       |
+
+构建还会生成 `/llms.txt` 和 `/llms-full.txt`。RSS、sitemap 和 LLM 文件中的文章仅包含 `published` 状态。停用 RSS 后，检查并删除之前生成的 `public/feed.xml`。
+
+## 评论
 
 ```yaml
-twikooEnvId: https://xxx.vercel.app
-disqusShortname: zla-pub
+twikooEnvId: https://comments.example.com
+disqusShortname:
 ```
 
-- **`twikooEnvId`**: Twikoo 评论系统的云函数部署地址，具体请参考 [Twikoo 文档](https://twikoo.js.org/)。
-- **`disqusShortname`**: 用于集成 Disqus 评论系统的短名称（可从 Disqus 账户中获取）。
+`twikooEnvId` 填 Twikoo 服务完整 URL，`disqusShortname` 填 Disqus 站点短名称。两项都填写时优先使用 Twikoo，都留空则禁用评论。单篇文章或页面可用 `showComments: false` 关闭评论。
 
-## 🔧 自定义代码 (Custom Code Blocks)
-
-::: danger
-❗️ 请谨慎使用自定义代码，确保代码的正确性和安全性。
-:::
+## 自定义代码
 
 ```yaml
 headerJavascript:
   - /scripts/custom.js
 slotFooter: |
-  <!-- Add your custom footer HTML here -->
+  <p>Custom footer</p>
 ```
 
-- **`headerJavascript`**: 在 `<head>` 中插入的自定义 JavaScript 文件。
-- **`slotFooter`**: 在 `<footer>` 中插入的自定义 HTML 代码。
+`headerJavascript` 每项是脚本 URL 或 `public` 下的根路径，例如 `public/scripts/custom.js` 对应 `/scripts/custom.js`。`slotFooter` 将 HTML 插入页脚，仅填写你信任的内容。
