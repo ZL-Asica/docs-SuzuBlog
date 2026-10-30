@@ -1,179 +1,169 @@
-# 📖 SuzuBlog 支持的 Markdown 语法指南
+# Markdown 语法
 
-SuzuBlog 使用 **Markdown** 进行文章编写，并支持多种扩展语法，以增强文章的可读性和表现力。以下是我们支持的 Markdown 语法及示例：
+以下语法适用于 SuzuBlog 1.14.0 的文章和页面。这里展示的是写法，扩展语法的实际效果请在博客中预览。
 
-## 1. 标题（Headings）
+## 基本语法
 
-使用 `#` 号表示不同级别的标题：
-
-::: warning
-请注意：一级标题 `#` 会被用于文章标题，不要在文章正文中使用一级标题。
-:::
+正文从二级标题开始，页面标题由 Frontmatter 提供。
 
 ```markdown
 ## 二级标题
 
 ### 三级标题
 
-#### 四级标题
+**加粗**、_斜体_、~~删除线~~、<u>下划线</u>
 
-##### 五级标题
+> 引用
 
-###### 六级标题
-```
+- 无序列表
+- [ ] 待办事项
+- [x] 已完成事项
 
-## 2. 文本格式（Text Formatting）
+1. 有序列表
+2. 下一项
 
-支持 **加粗**、_斜体_、~~删除线~~ 和 <u>下划线</u>：
+[链接](https://example.com)
 
-```markdown
-**加粗**
-_斜体_
-~~删除线~~
-<u>下划线</u>
-```
+第一行<br>第二行
 
-## 3. 引用（Blockquotes）
-
-使用 `>` 进行引用：
-
-```markdown
-> 这是一个引用段落。
->
-> > 这是一个嵌套的引用。
-```
-
-## 4. 列表（Lists）
-
-支持无序列表（`-` 或 `*`）和有序列表（`1.` `2.` `3.`）：
-
-```markdown
-- 无序列表项 1
-- 无序列表项 2
-  - 嵌套项 1
-  - 嵌套项 2
-
-1. 有序列表项 1
-2. 有序列表项 2
-   1. 嵌套有序项
-   2. 嵌套有序项
-```
-
-## 5. 代码块（Code Blocks）
-
-支持 `行内代码` 、<kbd>kbd</kbd>和 **多行代码块**：
-
-::: tip
-
-1. 代码块支持多种语言的语法高亮，并且右上角可以点击复制代码。
-2. \<kbd>\</kbd> 可以用于显示键盘按键，会自动添加对应按键 icon。
-
-:::
-
-````markdown
-`行内代码示例`
-
-<kbd>Ctrl</kbd> + <kbd>C</kbd>
-
-```python
-# Python 代码块示例
-def hello():
-    print("Hello, SuzuBlog!")
-```
-````
-
-## 6. 分隔线（Horizontal Rule）
-
-使用 `---` 添加分隔线：
-
-```markdown
 ---
 ```
 
-## 7. 链接（Links）
+支持表格、行内代码和带语言标记的代码块。代码块使用 Shiki 高亮，并提供复制按钮。
 
-支持超链接（内链和外链）：
+````markdown
+`inline code`
 
-```markdown
-[访问 SuzuBlog](https://www.zla.pub)
+<kbd>Ctrl</kbd> + <kbd>C</kbd>
+
+```typescript
+const message = 'Hello, SuzuBlog!'
 ```
 
-## 8. 图片（Images）
+| 名称     | 类型     |
+| -------- | -------- |
+| SuzuBlog | 博客模板 |
+````
 
-支持插入图片，可以使用相对路径或绝对路径：
+## 行内扩展
 
-::: tip
+```markdown
+==高亮==
+H~2~O
+E=mc^2^
 
-1. 相对路径是相对于 public 文件夹的路径，例如 `/images/logo.png` 是 public 文件夹下的 `images` 文件夹中的 `logo.png` 图片。
-2. 外链需要使用 `https://` 开头的绝对路径。
+[spoiler]隐藏内容，也支持 :wink: 表情[/spoiler]
 
+:sparkles: :smile:
+```
+
+`~...~` 是下标，`~~...~~` 是删除线。剧透内容可点击或轻触显示，再次操作隐藏。
+
+普通文本中的 `--` 会转换为短破折号，`---` 会转换为长破折号。行内代码和代码块保持原样。
+
+## 图片
+
+将图片放入 `public/images`，使用 `/images/...` 引用。外链图片使用完整的 HTTPS 地址。
+
+```markdown
+![图片说明](/images/photo.jpg)
+![图片说明|640x360, 75%](/images/photo.jpg)
+![左侧图片|320x180, left](/images/photo.jpg)
+![宽幅图片|wide](/images/photo.jpg)
+```
+
+`|` 前的文字用于替代文本和图片说明，后面可填写尺寸、宽度百分比和布局，用逗号分隔。
+
+| 参数            | 用途                       |
+| --------------- | -------------------------- |
+| `640x360`       | 图片宽高                   |
+| `75%`           | 容器宽度百分比，上限 100%  |
+| `center`        | 居中，默认布局             |
+| `left`、`right` | 大屏下左右浮动，小屏下堆叠 |
+| `thumbnail`     | 缩略图                     |
+| `wide`          | 宽幅图片                   |
+| `full`          | 跨视口宽度的图片           |
+
+点击图片可放大查看。
+
+## 图库
+
+使用 `[grid]` 将多张图片放入一个网格，按源文件顺序排列。建议填写图片宽高。
+
+```markdown
+[grid]
+![第一张|640x360](/images/first.jpg)
+![第二张|480x720](/images/second.jpg)
+![第三张|640x640](/images/third.jpg)
+[/grid]
+```
+
+使用 `mode=carousel` 切换为轮播：
+
+```markdown
+[grid mode=carousel]
+![第一张|640x360](/images/first.jpg)
+![第二张|480x720](/images/second.jpg)
+[/grid]
+```
+
+轮播每次显示一张图片，可切换查看。
+
+点击图库中的图片可放大查看，并切换同组图片。
+
+## 提示块
+
+```markdown
+::: warning 注意事项
+这里可以使用 **Markdown**。
 :::
-
-```markdown
-![SuzuBlog Logo](/images/logo.png)
 ```
 
-## 9. 表格（Tables）
+支持 `info`、`note`、`tip`、`success`、`warning`、`caution` 和 `danger`，`error` 是 `danger` 的别名。类型后可填写标题，省略时使用默认英文标题。
 
-使用 `|` 和 `-` 创建表格：
+## 折叠内容
+
+支持 HTML 和 Discourse 风格两种写法，内容可以包含 Markdown。
 
 ```markdown
-| 名称    | 发布时间   | 评分       |
-| ------- | ---------- | ---------- |
-| Suzu    | 2024年11月 | ⭐⭐⭐⭐⭐ |
-| Next.js | 2016年10月 | ⭐⭐⭐⭐   |
+<details>
+<summary>查看详情</summary>
+
+这里是 **详情**。
+
+</details>
+
+[details="查看详情"]
+
+这里是 **详情**。
+
+[/details]
 ```
 
-## 10. 表情符号（Emoji）
-
-支持使用 **Emoji** 表情符号：
+## 脚注和缩写
 
 ```markdown
-🎉 ✨ 🚀 📖 🔗 😊
+这里有一条脚注[^note]。
+
+[^note]: 脚注内容。
+
+HTML 是一种标记语言。
+
+*[HTML]: HyperText Markup Language
 ```
 
-## 11. 数学公式（MathJax）
+脚注和缩写支持预览提示。缩写定义单独成段，匹配正文中的同名缩写。
 
-支持 **LaTeX** 语法的数学公式：
+## 数学公式
+
+使用 KaTeX 渲染 LaTeX 公式。行内公式使用 `$...$`，独立公式使用 `$$`。
 
 ```markdown
+行内公式 $E = mc^2$。
+
 $$
 E = mc^2
 $$
 ```
 
-## 12. 折叠详情（Details & Summary）
-
-使用 `<details>` 和 `<summary>` 创建折叠详情：
-
-```markdown
-<details>
-<summary>点击查看详情</summary>
-
-这里是折叠的内容。
-
-</details>
-```
-
-## 13. 换行（Line Breaks）
-
-使用 `<br>` 或者两个空格加回车进行换行：
-
-```markdown
-第一行<br>第二行
-```
-
-## 14. 清单（Checklists）
-
-使用 `- [ ]` 和 `- [x]` 创建清单：
-
-```markdown
-- [ ] 未完成事项
-- [x] 已完成事项
-```
-
-## 🚀 结语
-
-以上就是 SuzuBlog 支持的 Markdown 语法。你可以使用这些语法来撰写更加丰富的文章，让你的博客内容更加生动、清晰！📖✨
-
-如果你有任何问题或建议（比如想要支持的语法、样式问题等），欢迎在 [GitHub Issue](https://github.com/ZL-Asica/SuzuBlog/issues/new/choose) 提出！
+友情链接卡片使用专门的 `Links` 代码块，见 [友情链接](./friends)。

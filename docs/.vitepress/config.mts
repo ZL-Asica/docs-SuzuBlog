@@ -14,7 +14,7 @@ const sharedThemeConfig = {
   footer: {
     message: {
       zh: '此文档基于 CC BY 4.0 进行授权',
-      en: 'This docs Licensed under CC BY 4.0',
+      en: 'Documentation licensed under CC BY 4.0',
     },
     copyright: {
       zh: '©️ 2024-Present <a href="https://zla.pub" target="_blank">ZL Asica</a> 版权所有',
@@ -22,27 +22,45 @@ const sharedThemeConfig = {
     },
   },
   editLink: {
-    patter: 'https://github.com/ZL-Asica/docs-SuzuBlog/edit/main/docs/:path',
+    pattern: 'https://github.com/ZL-Asica/docs-SuzuBlog/edit/main/docs/:path',
   },
 }
 
 const sharedHeadConfig = {
   zh: [
-    ['meta', { name: 'description', content: 'SuzuBlog 的文档站点' }],
-    ['meta', { name: 'keywords', content: 'SuzuBlog, 文档, VuePress, Next.js' }],
-    ['meta', { property: 'og:description', content: 'SuzuBlog 的文档站点' }],
+    [
+      'meta',
+      { name: 'description', content: 'SuzuBlog 的文档站点' },
+    ],
+    [
+      'meta',
+      { name: 'keywords', content: 'SuzuBlog, 文档, VitePress, Next.js' },
+    ],
+    [
+      'meta',
+      { property: 'og:description', content: 'SuzuBlog 的文档站点' },
+    ],
   ] as HeadConfig[],
   en: [
-    ['meta', { name: 'description', content: 'SuzuBlog Docs' }],
-    ['meta', { name: 'keywords', content: 'SuzuBlog, Docs, VuePress, Next.js' }],
-    ['meta', { property: 'og:description', content: 'SuzuBlog Docs' }],
+    [
+      'meta',
+      { name: 'description', content: 'SuzuBlog Docs' },
+    ],
+    [
+      'meta',
+      { name: 'keywords', content: 'SuzuBlog, Docs, VitePress, Next.js' },
+    ],
+    [
+      'meta',
+      { property: 'og:description', content: 'SuzuBlog Docs' },
+    ],
   ] as HeadConfig[],
 }
 
 const sharedNavConfig = {
   zh: [
     { text: '首页', link: '/' },
-    { text: '指南', link: '/guide' },
+    { text: '指南', link: '/guide/' },
     {
       text: `v${pkg.version}`,
       items: [
@@ -53,12 +71,12 @@ const sharedNavConfig = {
   ] as DefaultTheme.NavItem[],
   en: [
     { text: 'Home', link: '/en/' },
-    { text: 'Guide', link: '/en/guide' },
+    { text: 'Guide', link: '/en/guide/' },
     {
       text: `v${pkg.version}`,
       items: [
         { text: 'Releases', link: 'https://github.com/ZL-Asica/SuzuBlog/releases' },
-        { text: 'Contribution', link: 'https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md' },
+        { text: 'Contributing', link: 'https://github.com/ZL-Asica/SuzuBlog/blob/main/CONTRIBUTING.md' },
       ],
     },
   ] as DefaultTheme.NavItem[],
@@ -75,7 +93,9 @@ const sharedSidebarConfig = {
     },
     {
       text: '配置文件',
-      items: [{ text: 'config.yml', link: '/guide/config' }],
+      items: [
+        { text: 'config.yml', link: '/guide/config/' },
+      ],
     },
     {
       text: '文章及页面',
@@ -86,7 +106,11 @@ const sharedSidebarConfig = {
         { text: '友情链接', link: '/guide/posts/friends' },
       ],
     },
-    { items: [{ text: '参与贡献', link: '/guide/contribution' }] },
+    {
+      items: [
+        { text: '参与贡献', link: '/guide/contribution' },
+      ],
+    },
   ],
   en: [
     {
@@ -98,7 +122,9 @@ const sharedSidebarConfig = {
     },
     {
       text: 'Config Files',
-      items: [{ text: 'config.yml', link: '/en/guide/config' }],
+      items: [
+        { text: 'config.yml', link: '/en/guide/config/' },
+      ],
     },
     {
       text: 'Posts & Pages',
@@ -109,25 +135,70 @@ const sharedSidebarConfig = {
         { text: 'Friends', link: '/en/guide/posts/friends' },
       ],
     },
-    { items: [{ text: 'Contribution', link: '/en/guide/contribution' }] },
+    {
+      items: [
+        { text: 'Contributing', link: '/en/guide/contribution' },
+      ],
+    },
   ],
 }
 
 export default defineConfig({
   title: 'SuzuBlog Docs',
   head: [
-    ['meta', { name: 'author', content: 'ZL Asica' }],
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['link', { rel: 'icon', type: 'image/png', href: '/favicon-96x96.png', sizes: '96x96' }],
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
-    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
-    ['link', { rel: 'manifest', href: '/site.webmanifest' }],
-    ['meta', { property: 'og:title', content: 'SuzuBlog Docs' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:url', content: 'https://suzu.zla.app' }],
-    ['meta', { property: 'og:image', content: 'https://suzu.zla.app/apple-touch-icon.png' }],
-    ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
+    [
+      'meta',
+      { name: 'author', content: 'ZL Asica' },
+    ],
+    [
+      'link',
+      { rel: 'icon', href: '/favicon.ico' },
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon-96x96.png',
+        sizes: '96x96',
+      },
+    ],
+    [
+      'link',
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    ],
+    [
+      'link',
+      { rel: 'shortcut icon', href: '/favicon.ico' },
+    ],
+    [
+      'link',
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+    ],
+    [
+      'link',
+      { rel: 'manifest', href: '/site.webmanifest' },
+    ],
+    [
+      'meta',
+      { property: 'og:title', content: 'SuzuBlog Docs' },
+    ],
+    [
+      'meta',
+      { property: 'og:type', content: 'website' },
+    ],
+    [
+      'meta',
+      { property: 'og:url', content: 'https://suzu.zla.app' },
+    ],
+    [
+      'meta',
+      { property: 'og:image', content: 'https://suzu.zla.app/apple-touch-icon.png' },
+    ],
+    [
+      'meta',
+      { property: 'twitter:card', content: 'summary_large_image' },
+    ],
   ],
   locales: {
     root: {
@@ -146,7 +217,7 @@ export default defineConfig({
         },
         editLink: {
           text: '在 GitHub 上编辑此页',
-          pattern: sharedThemeConfig.editLink.patter,
+          pattern: sharedThemeConfig.editLink.pattern,
         },
       },
     },
@@ -154,6 +225,7 @@ export default defineConfig({
       label: 'English',
       lang: 'en-US',
       link: '/en/',
+      head: sharedHeadConfig.en,
       themeConfig: {
         nav: sharedNavConfig.en,
         sidebar: sharedSidebarConfig.en,
@@ -164,7 +236,7 @@ export default defineConfig({
           copyright: sharedThemeConfig.footer.copyright.en,
         },
         editLink: {
-          pattern: sharedThemeConfig.editLink.patter,
+          pattern: sharedThemeConfig.editLink.pattern,
         },
       },
     },

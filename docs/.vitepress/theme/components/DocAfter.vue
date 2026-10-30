@@ -2,16 +2,21 @@
 import { useData } from 'vitepress'
 import { computed } from 'vue'
 
-const { site } = useData()
+const { theme, lang } = useData()
+const isChinese = computed(() => lang.value.startsWith('zh'))
 
 const footerMessage = computed(() => {
-  const footer = site.value.themeConfig?.footer
-  return footer && 'message' in footer ? footer.message : ''
+  const footer = theme.value.footer
+  return footer && 'message' in footer
+    ? footer.message
+    : ''
 })
 
 const copyright = computed(() => {
-  const footer = site.value.themeConfig?.footer
-  return footer && 'copyright' in footer ? footer.copyright : ''
+  const footer = theme.value.footer
+  return footer && 'copyright' in footer
+    ? footer.copyright
+    : ''
 })
 </script>
 
@@ -35,25 +40,25 @@ const copyright = computed(() => {
               id="zla-doc-footer-title"
               class="zla-doc-footer-title"
             >
-              Help us improve these docs
+              {{ isChinese ? '改进文档' : 'Improve these docs' }}
             </span>
             <span
               id="zla-doc-footer-sub"
               class="zla-doc-footer-sub"
             >
-              If something feels unclear, outdated, or missing, you’re very welcome to open a documentation issue so we can refine it.
+              {{ isChinese ? '发现错误或遗漏，请提交文档问题。' : 'Report errors or missing information.' }}
             </span>
           </div>
         </div>
 
         <div class="zla-doc-footer-actions">
           <a
-            href="https://github.com/ZL-Asica/docs-SuzuBlog/issues/new?template=+documentation_update.yml"
+            href="https://github.com/ZL-Asica/docs-SuzuBlog/issues/new?template=documentation_update.yml"
             class="zla-doc-footer-chip"
             aria-describedby="zla-doc-footer-sub"
           >
             <span class="zla-doc-footer-chip-label">
-              Suggest an improvement
+              {{ isChinese ? '反馈文档问题' : 'Report a docs issue' }}
             </span>
             <span aria-hidden="true">↗</span>
           </a>

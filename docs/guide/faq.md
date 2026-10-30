@@ -1,89 +1,37 @@
-# ❓ 常见问题（FAQ）
+# 常见问题
 
-## **1. 为什么选择 SuzuBlog？**
+## 应该使用哪个 Node.js 和 pnpm 版本？
 
-SuzuBlog 是一个基于 **Next.js** 和纯 **Markdown** 的极简博客模板，具有以下特点：
+使用 Node.js 24，具体版本见仓库 `.node-version`。SuzuBlog 1.14.0 使用 pnpm 12.16.1，版本记录在 `package.json` 的 `packageManager` 中。
 
-- 极速性能：支持增量静态再生（ISR）和静态站点生成（SSG），让你的博客秒开。
-- 简单易用：只需几分钟即可启动，无需数据库和复杂的配置。
-- 易于定制：通过简单的 `config.yml` 配置文件即可快速调整站点样式和功能。
-- 兼容性强：Markdown 格式的文章和页面，支持代码高亮、LaTeX 公式和多种标签。
+## 修改配置后没有生效？
 
-## **2. 如何配置站点信息？**
+配置位于根目录的 `config.yml`。重启开发服务器，或重新构建并部署。检查终端中的 Zod 校验错误，确认字段名、类型和 URL 格式。
 
-在项目根目录中找到 `config.yml` 文件，按照以下左侧 [config.yml](./config/) 页面的详细教程进行修改：
+## 文章为什么是 404？
 
-- 修改站点名称、描述和作者信息。
-- 配置导航栏和社交链接。
-- 设置支持的多语言选项。
+确认文件位于 `posts` 顶层，扩展名为 `.md`，URL 与文件名一致。生产环境默认不生成草稿页面，`hidden` 页面只能在开发环境显式开启。详见 [文章状态](./posts/#文章状态)。
 
-## **3. 如何撰写和管理文章？**
+部署后新增的文章需要重新构建。`posts/_pages` 中仅有固定的关于和友链页面会生成路由。
 
-- 将 Markdown 格式的文章文件放置在 `posts` 文件夹中。
-- 文件名会自动成为文章的 URL，例如 `posts/my-post.md` 将被访问为 `/my-post`。
-- 如果需要自定义页面，例如“关于我”或“友情链接”，可以编辑 `posts/_pages` 文件夹中的对应文件。
+## 日期解析报错怎么办？
 
-## **4. 如何部署我的博客？**
+日期需要是字符串，例如 `date: '2026-10-30 09:00:00'`。给日期加引号，避免 YAML 将其解析为日期对象。
 
-### 推荐方法：使用 [Vercel](https://vercel.com)
+## 图片或图库没有按预期显示？
 
-点击下方按钮即可使用 Vercel 部署你的博客：
+本地图片从站点根路径引用，例如 `/images/photo.jpg`，文件放在 `public/images`。远程图片使用 HTTPS URL。
 
-[![Deploy with Vercel][vercel-button]][vercel-deploy-link]
+图库的开始和结束标记各占一行。轮播使用 `[grid mode=carousel]`，详见 [图片与图库](./posts/grammar#图库)。扩展语法请在 SuzuBlog 中预览，编辑器的普通 Markdown 预览可能不支持。
 
-::: warning
-记得把 Vercel 环境变量中的 `ENABLE_EXPERIMENTAL_COREPACK` 设置为 `1` 以启用 pnpm 消除 Warning。
-:::
+## 是否支持多语言博客？
 
-### 本地预览或部署
+`lang` 设置界面语言，内置中文、英文和日文，其他语言回退到英文。文章翻译和多语言路由需要自行实现。
 
-1. 确保安装了 [Node.js](https://nodejs.org/) 和 [pnpm](https://pnpm.io/)。
-2. 运行以下命令：
+## 模板更新会覆盖我的文件吗？
 
-   ```bash
-   pnpm install
-   pnpm dev
-   ```
+同步工作流需手动运行。它保留 `posts`、`public` 和 `config.yml`，会更新其他模板文件。先保存自定义修改，再按 [更新模板](./index#更新模板) 操作。新配置需要手动补充。
 
-3. 打开浏览器访问 `http://localhost:3000`。
+## 如何反馈问题？
 
-## **5. 模板更新时，我的修改会丢失吗？**
-
-不会！通过 **GitHub Actions**，你的博客会自动同步模板的最新更新，但以下目录不会被覆盖：
-
-- `public`：你的静态资源文件。
-- `posts`：你的所有文章内容。
-- `config.yml`：你的站点配置信息。
-
-在同步完成后，自行检查对照 `config.yml`，手动补充和配置新增的配置项。
-
-## **6. 是否支持多语言？**
-
-是的！SuzuBlog 支持多语言功能，具体实现如下：
-
-1. 在 `config.yml` 中添加多语言配置，例如 `zh`、`en`、`ja`。
-2. 系统会根据你的设置自动生成对应语言的导航栏翻译（包括 aria 内容）。
-
-## **7. 如何优化 SEO？**
-
-SuzuBlog 内置了完整的 SEO 支持：
-
-- 自动生成 `sitemap.xml` 和 `robots.txt`。
-- 提供 Open Graph 和 Twitter Card 元信息。
-- 支持配置站点的 `meta` 标签和描述信息，提升搜索引擎可见性。
-- 每一个页面都会根据内容自动生成 `meta` 标签，包括文章的标题、描述和关键词。
-
-## **8. 为什么我需要 Node.js 18 或更高版本？**
-
-SuzuBlog 使用了现代的工具链和功能（如 ESM 模块、`pnpm` 和 Tailwind CSS），这些功能需要 Node.js 18 或更高版本支持。
-
-## **9. 如果遇到问题，该怎么办？**
-
-- **查看文档**：阅读完整的 SuzuBlog 文档，了解详细的使用说明。
-- **加入社区**：访问 [GitHub Issues](https://github.com/ZL-Asica/SuzuBlog/issues) 提交问题或查看已有的解决方案。
-- **联系我们**：通过 GitHub 页面上的联系方式获取帮助。
-
-希望这些解答能帮助你顺利使用 SuzuBlog！如果还有其他问题，请随时联系或提交反馈哦～ 💕✨
-
-[vercel-button]: https://vercel.com/button
-[vercel-deploy-link]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FZL-Asica%2FSuzuBlog&env=ENABLE_EXPERIMENTAL_COREPACK&envDescription=This%20is%20option%20to%20enable%20corepack%20by%20default%20to%20use%20pnpm.%20Set%20this%20to%201.&envLink=https%3A%2F%2Fvercel.com%2Fdocs%2Fbuilds%2Fconfigure-a-build%23corepack&project-name=suzu-blog&repository-name=SuzuBlog&redirect-url=https%3A%2F%2Fsuzu.zla.app%2F&demo-title=ZLA%20%E5%B0%8F%E7%AB%99%20(Demo)&demo-description=ZL%20Asica%2C%20the%20creator%20of%20SuzuBlog%2C%20personal%20Blog.&demo-url=https%3A%2F%2Fzla.pub%2F
+在 [GitHub Issues](https://github.com/ZL-Asica/SuzuBlog/issues) 中提供版本、复现步骤、相关配置和终端日志。文档错误可提交到 [文档仓库](https://github.com/ZL-Asica/docs-SuzuBlog/issues)。

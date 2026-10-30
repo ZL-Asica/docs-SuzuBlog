@@ -1,117 +1,66 @@
-# 📝 Blog Posts Settings
+# Post settings
 
-You only need to write your posts in Markdown and place them in the **`posts` folder**. SuzuBlog will automatically render your posts, and the filename will serve as the post's URL.
-
-Each post **must** include **Frontmatter**, which is used to define essential metadata and display settings.
+Save posts as `posts/*.md`. The filename sets the path: `posts/my-post.md` becomes `/my-post`.
 
 ## Frontmatter
 
-### 🔖 What is Frontmatter?
-
-Frontmatter is a metadata block at the top of a Markdown file, enclosed within triple dashes, for example:
+Wrap YAML metadata in `---` at the top of the file. Quote dates so YAML treats them as strings.
 
 ```yaml
 ---
-title: Sample Post
-date: 2024-12-08
-author: ZL Asica # Author (optional)
-thumbnail: /images/example-thumbnail.jpg # Thumbnail (optional)
-tags: # Tags (optional)
-  - SuzuBlog
-  - Frontmatter
-categories: # Categories (optional)
-  - Tutorial
-redirect: /example-redirect # Redirect URL (optional)
-showComments: true # Show comments (optional)
-showLicense: true # Show license statement (optional)
-autoSlug: true # Automatically generate hierarchical paths (optional)
-status: published # Post status (optional)
+title: Example post
+date: '2026-10-30 09:00:00'
+author: ZL Asica
+thumbnail: /images/example.jpg
+tags:
+  - Markdown
+categories:
+  - Tutorials
+showComments: true
+showLicense: true
+showThumbnail: true
+autoSlug: true
+status: published
 ---
 ```
 
-### 🛠️ Explanation of Frontmatter Fields
+| Field                | Purpose and default                                                                                 |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+| `title`              | Title, up to 100 characters. Falls back to the filename                                             |
+| `date`               | Publication date as `'YYYY-MM-DD'` or `'YYYY-MM-DD HH:mm:ss'`. Falls back to file modification time |
+| `author`             | Author, up to 30 characters. Falls back to the author in `config.yml`                               |
+| `thumbnail`          | Image path. Falls back to `background` in `config.yml`                                              |
+| `tags`, `categories` | Arrays of strings, case-sensitive                                                                   |
+| `redirect`           | Redirect destination. The article redirects instead of rendering its content                        |
+| `showComments`       | Show comments, default `true`. Requires a configured comment service                                |
+| `showLicense`        | Show the license notice, default `true`                                                             |
+| `showThumbnail`      | Show the thumbnail, default `true`                                                                  |
+| `autoSlug`           | Show hierarchical numbering before body headings, default `true`. Does not change the post URL      |
+| `status`             | Post visibility, default `published`                                                                |
 
-#### **Required Fields**
+## Visibility
 
-- **`title`**: The title of the post, which will be displayed in the page title and summary.
-- **`date`**: The publication date of the post, formatted as `YYYY-MM-DD`. (If not set, the last modified date of the file will be used.)
+| Status      | Production page  | Post list and search             | RSS, sitemap, LLM files | Search engine indexing |
+| ----------- | ---------------- | -------------------------------- | ----------------------- | ---------------------- |
+| `published` | Available        | Included                         | Included                | Allowed                |
+| `unlisted`  | Available by URL | Excluded                         | Excluded                | `noindex`              |
+| `draft`     | 404 by default   | Included when preview is enabled | Excluded                | `noindex`              |
+| `hidden`    | Always 404       | Excluded                         | Excluded                | `noindex`              |
 
-#### **Global Fields**
+Drafts are available in development. To preview drafts in a production build, set `ALLOW_DRAFTS=true` when building and running the app. Hidden posts are available only outside production with `ALLOW_HIDDEN=true`. This setting cannot enable them in production.
 
-- **`author`**: The name of the post’s author. (If not set, the global author name will be used.)
-- **`thumbnail`**: The thumbnail image path for the post, which can be a relative path or a full URL. (If not set, the default thumbnail specified in `config.yml` will be used.)
+Anyone with the URL can access an unlisted post. Visibility settings do not provide access control.
 
-#### **Optional Fields**
+## Excerpts
 
-::: warning
-⚠️ The values for `tags` and `categories` must be arrays and are case-sensitive. It is recommended to maintain a consistent capitalization format to avoid duplicate categories.
-:::
-
-- **`tags`**: An array of tags for finer classification of the post. Example:
-
-  ```yaml
-  tags:
-    - SuzuBlog
-    - Frontmatter
-    - Next.js
-  ```
-
-  Tags are primarily used for indexing and filtering posts. You can add multiple tags, but it's recommended to keep them between 2-5 per post.
-
-- **`categories`**: An array of categories for higher-level content organization. Example:
-
-  ```yaml
-  categories:
-    - Tutorial
-    - Development
-  ```
-
-  Categories typically represent broader topics, and each post should have 1-2 categories for better content organization.
-
-- **`redirect`**: Specifies a redirect URL for the post (e.g., `"/new-url"`). If set, the post content will not be displayed, and visitors will be redirected to the specified URL.
-- **`showComments`**: Determines whether to show the comment section. Default is `true`.
-- **`showLicense`**: Determines whether to display the post's copyright license. Default is `true`.
-- **`showThumbnail`**: Determines whether to display the post's thumbnail. Default is `true`.
-- **`autoSlug`**: Automatically generates hierarchical paths for the post. Default is `true`. (If set to `false`, the post’s slug will be derived from the title inside the Markdown file instead.)
-- **`status`**: Post visibility status. It controls whether a post page is generated, whether it shows up in listings, and whether crawlers/search engines are allowed to index it.
-
-  Supported values (defaults to `published` if omitted):
-  - **`published` (default)**: Publicly published
-    - ✅ The post page is generated
-    - ✅ Visible in the `/posts` listing
-    - ✅ Included in RSS / sitemap / LLMs.txt (and other site indexing entry points)
-    - ✅ Search engines may index it (`index`)
-  - **`unlisted`**: Publicly accessible, but not distributed (only visible if you know the URL)
-    - ✅ The post page is generated (direct URL access works)
-    - ❌ Hidden from the `/posts` listing
-    - ❌ Excluded from RSS / sitemap / LLMs.txt
-    - 🚫 Not indexed by search engines by default (`noindex`)
-  - **`draft`**: Work-in-progress (not ready to publish)
-    - 🚫 Not generated in production by default (visiting the URL returns **404**)
-    - ❌ Hidden from the `/posts` listing
-    - ❌ Excluded from RSS / sitemap / LLMs.txt
-    - 🚫 Not indexed by search engines (`noindex`)
-    - 💡 To preview drafts in a production-like build locally, set `ALLOW_DRAFTS=true` when building/running the site.
-  - **`hidden`**: Strong hidden (internal use / never meant to be public)
-    - 🚫 Not generated in production (visiting the URL returns **404**)
-    - ❌ Hidden from the `/posts` listing
-    - ❌ Excluded from RSS / sitemap / LLMs.txt
-    - 🚫 Not indexed by search engines (`noindex`)
-    - 💡 For local debugging only, set `ALLOW_HIDDEN=true` to render hidden posts.
-      ::: tip
-      `status` only controls page generation, discoverability, and indexing. It is **not an access control system**: if a page is publicly reachable (e.g., `published` or an accessible `unlisted` URL), anyone with the link can still view it.
-      :::
-
-## ✂️ Excerpt Truncation
-
-Use `<!--more-->` to manually define where the post excerpt should be truncated, for example:
+Use `<!--more-->` to choose the source of the excerpt:
 
 ```markdown
-This is the beginning of the post.
+This is the excerpt.
 
 <!--more-->
 
-This is the remaining content of the post.
+The rest of the post goes here.
 ```
 
-- If `<!--more-->` is not set, the system will automatically generate an excerpt that fits within the post card without overflowing.
+The excerpt uses content before the marker, truncated to 150 characters before Markdown cleanup. Without a marker, it uses the beginning of the post.
