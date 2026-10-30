@@ -5,7 +5,7 @@
 Install Git, use Node.js 24 as specified in `.node-version`, and use pnpm 12.16.1 from `package.json`.
 
 ```bash
-npm install --global pnpm@12.16.1
+corepack enable pnpm
 git clone https://github.com/your-username/your-blog.git
 cd your-blog
 pnpm install

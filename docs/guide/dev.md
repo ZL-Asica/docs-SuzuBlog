@@ -5,7 +5,7 @@
 安装 Git，使用仓库 `.node-version` 指定的 Node.js 24 和 `package.json` 指定的 pnpm 12.16.1。
 
 ```bash
-npm install --global pnpm@12.16.1
+corepack enable pnpm
 git clone https://github.com/your-username/your-blog.git
 cd your-blog
 pnpm install
