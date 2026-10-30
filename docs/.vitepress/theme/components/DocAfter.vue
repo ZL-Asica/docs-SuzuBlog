@@ -6,12 +6,16 @@ const { site } = useData()
 
 const footerMessage = computed(() => {
   const footer = site.value.themeConfig?.footer
-  return footer && 'message' in footer ? footer.message : ''
+  return footer && 'message' in footer
+    ? footer.message
+    : ''
 })
 
 const copyright = computed(() => {
   const footer = site.value.themeConfig?.footer
-  return footer && 'copyright' in footer ? footer.copyright : ''
+  return footer && 'copyright' in footer
+    ? footer.copyright
+    : ''
 })
 </script>
 
